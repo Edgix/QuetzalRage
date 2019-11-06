@@ -1,0 +1,36 @@
+{
+    "anims": [
+        {
+            "key": "coaxo_walk",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "coaxo",
+                    "frame": "coaxo0"
+                },
+                {
+                    "key": "coaxo",
+                    "frame": "coaxo1"
+                },
+                {
+                    "key": "coaxo",
+                    "frame": "coaxo2"
+                }
+            ]
+        },
+        {
+            "key": "coaxo_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "coaxo",
+                    "frame": "coaxo3"
+                }
+            ]
+        }
+    ]
+}

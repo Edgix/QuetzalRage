@@ -1,0 +1,32 @@
+{
+    "anims": [
+        {
+            "key": "soldado_walk",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "soldado",
+                    "frame": "soldado0"
+                },
+                {
+                    "key": "soldado",
+                    "frame": "soldado1"
+                }
+            ]
+        },
+        {
+            "key": "soldado_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "soldado",
+                    "frame": "soldado1"
+                }
+            ]
+        }
+    ]
+}
