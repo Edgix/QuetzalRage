@@ -1,0 +1,138 @@
+{
+    "frames": [
+        {
+            "filename": "coaxorun0",
+            "frame": {
+                "x": 1,
+                "y": 1,
+                "w": 64,
+                "h": 64
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coaxorun1",
+            "frame": {
+                "x": 67,
+                "y": 1,
+                "w": 64,
+                "h": 64
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coaxorun2",
+            "frame": {
+                "x": 133,
+                "y": 1,
+                "w": 64,
+                "h": 64
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coaxorun3",
+            "frame": {
+                "x": 199,
+                "y": 1,
+                "w": 64,
+                "h": 64
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coaxorun4",
+            "frame": {
+                "x": 265,
+                "y": 1,
+                "w": 64,
+                "h": 64
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coaxorun5",
+            "frame": {
+                "x": 331,
+                "y": 1,
+                "w": 64,
+                "h": 64
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coaxo_estatico0",
+            "frame": {
+                "x": 1,
+                "y": 67,
+                "w": 64,
+                "h": 64
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coaxo_estatico1",
+            "frame": {
+                "x": 67,
+                "y": 67,
+                "w": 64,
+                "h": 64
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coaxo_estatico2",
+            "frame": {
+                "x": 133,
+                "y": 67,
+                "w": 64,
+                "h": 64
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coaxo_estatico3",
+            "frame": {
+                "x": 199,
+                "y": 67,
+                "w": 64,
+                "h": 64
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Phaser3",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
