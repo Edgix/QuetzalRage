@@ -1,6 +1,5 @@
 import Bootloader from "./scenes/Bootloader.js"
 import Nivel_1 from "./scenes/Nivel_1.js";
-import { Physics } from "phaser";
 
 const config = {
     title: "Curso Phaser",		    //Nombre del juego (opcional)
@@ -24,9 +23,10 @@ const config = {
                 "#e74c3c", 
                 "#000000"]
     },
-    Physics: {
-        default : "arcade",
+    physics: {
+        default : 'arcade',
         arcade:{
+            gravity: {y:500},
             debug : false
         }
 

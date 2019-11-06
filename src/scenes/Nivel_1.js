@@ -14,15 +14,23 @@ class Nivel_1 extends Phaser.Scene{
         this.load.path = "./assets/escenarios/";            //Ruta Escenarios(Inicia aqui cosas de la carpeta Escenarios)
         this.load.image(["Nivel_1"])
         this.load.path = "./assets/personajes/";            //Ruta Personajes(Inicia aqui cosas de la carpeta Personajes)
+        this.load.atlas('Coaxoch', 'coaxoch_atlas/coaxoch.png','coaxoch_atlas/coaxoch_atlas.json');
+        this.load.animation('CoaxochAnim', 'coaxoch_atlas/coaxoch_anim.json');
+        
     }
     create() {
         var x=31;
         
+        this.coaxoch = this.physics.add.sprite(200,200, 'Coaxoch');
+        this.coaxoch.setDepth(1);
+        //this.coaxoch.play('coaxorun_walk');
+    
         for(var i=0; i<=23;i++)
         {
         var y=684;
-        this.tierra = 
-        this.add.image(x, 624, "tierra");
+        this.tierra = this.physics.add.staticGroup();
+        this.tierra.create(x, 624, 'tierra').refreshBody();
+        this.physics.add.collider(this.coaxoch,this.tierra);
         for(var a=0; a<=2;a++)
         {
             this.tierra2 = this.add.image(x,y,"tierra_b");
@@ -32,9 +40,18 @@ class Nivel_1 extends Phaser.Scene{
         }
         x+=64;
         this.tierra.setDepth(1); 
+
         }
         this.Fondo = this.add.image(600, 500, "Nivel_1"); 
         this.Fondo.setDepth(0);
+
+        // Sección donde se Agregaran Fisicas
+
+        this.coaxoch.setBounce(.1);
+
+
+        // Fin Seccion Fisicas
+
     }
     update(time, delta) {
         // ESTA FUNCION CREA UN CICLO INFINITO
