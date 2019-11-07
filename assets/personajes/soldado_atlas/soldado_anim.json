@@ -1,0 +1,72 @@
+{
+    "anims": [
+        {
+            "key": "soldadorun_walk",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "soldado",
+                    "frame": "soldadorun0"
+                },
+                {
+                    "key": "soldado",
+                    "frame": "soldadorun1"
+                },
+                {
+                    "key": "soldado",
+                    "frame": "soldadorun2"
+                },
+                {
+                    "key": "soldado",
+                    "frame": "soldadorun3"
+                },
+                {
+                    "key": "soldado",
+                    "frame": "soldadorun4"
+                }
+            ]
+        },
+        {
+            "key": "soldadorun_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "soldado",
+                    "frame": "soldadorun0"
+                }
+            ]
+        },
+        {
+            "key": "soldadostatic_walk",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "soldado",
+                    "frame": "soldadostatic0"
+                },
+                {
+                    "key": "soldado",
+                    "frame": "soldadostatic1"
+                }
+            ]
+        },
+        {
+            "key": "soldadostatic_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "soldado",
+                    "frame": "soldadostatic0"
+                }
+            ]
+        }
+    ]
+}

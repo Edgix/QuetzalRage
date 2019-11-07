@@ -1,0 +1,99 @@
+{
+    "frames": [
+        {
+            "filename": "soldadorun0",
+            "frame": {
+                "x": 1,
+                "y": 1,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "soldadorun1",
+            "frame": {
+                "x": 73,
+                "y": 1,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "soldadorun2",
+            "frame": {
+                "x": 145,
+                "y": 1,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "soldadorun3",
+            "frame": {
+                "x": 217,
+                "y": 1,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "soldadorun4",
+            "frame": {
+                "x": 289,
+                "y": 1,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "soldadostatic0",
+            "frame": {
+                "x": 1,
+                "y": 73,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "soldadostatic1",
+            "frame": {
+                "x": 73,
+                "y": 73,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Phaser3",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
