@@ -1,0 +1,60 @@
+{
+    "anims": [
+        {
+            "key": "hernanrun_walk",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "hernan",
+                    "frame": "hernanrun0"
+                },
+                {
+                    "key": "hernan",
+                    "frame": "hernanrun1"
+                }
+            ]
+        },
+        {
+            "key": "hernanrun_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "hernan",
+                    "frame": "hernanstatic0"
+                }
+            ]
+        },
+        {
+            "key": "hernanstatic_walk",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "hernan",
+                    "frame": "hernanstatic0"
+                },
+                {
+                    "key": "hernan",
+                    "frame": "hernanstatic1"
+                }
+            ]
+        },
+        {
+            "key": "hernanstatic_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "hernan",
+                    "frame": "hernanstatic0"
+                }
+            ]
+        }
+    ]
+}
