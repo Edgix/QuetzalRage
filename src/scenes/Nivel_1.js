@@ -19,7 +19,8 @@ class Nivel_1 extends Phaser.Scene{
         
     }
     create() {
-        
+        const keyCodes= Phaser.Input.Keyboard.KeyCodes;
+        this.cursor= this.input.keyboard.createCursorKeys();
         this.coaxoch = this.physics.add.sprite(200,200, 'Coaxoch');
         this.coaxoch.setDepth(1);
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
@@ -50,26 +51,6 @@ class Nivel_1 extends Phaser.Scene{
              tierra_b.setDepth(1);
 
         }   );
-        
-        //this.coaxoch.play('coaxorun_walk');
-    
-       /*for(var i=0; i<=23;i++)
-        {
-        var y=684;
-        this.tierra = this.physics.add.staticGroup();
-        this.tierra.create(x, 624, 'tierra').refreshBody();
-        this.physics.add.collider(this.coaxoch,this.tierra);
-        for(var a=0; a<=2;a++)
-        {
-            this.tierra2 = this.add.image(x,y,"tierra_b");
-            this.tierra2.setDepth(1);
-            y+=64;
-            
-        }
-        x+=64;
-        this.tierra.setDepth(1); 
-
-        }*/
 
         this.Fondo = this.add.image(850, 320, "Nivel_1"); 
         this.Fondo.setDepth(0);
@@ -82,9 +63,30 @@ class Nivel_1 extends Phaser.Scene{
 
         // Fin Seccion Fisicas
 
+        
+
     }
     update(time, delta) {
-        // ESTA FUNCION CREA UN CICLO INFINITO
+    
+        if (this.cursor.left.isDown)
+    {
+        this.coaxoch.setVelocityX(-160);
+        this.coaxoch.flipX=true;
+    }
+    else if (this.cursor.right.isDown)
+    {
+        this.coaxoch.setVelocityX(160);
+        this.coaxoch.flipX=false;
+    }
+    else
+    {
+        this.coaxoch.setVelocityX(0);
+    }
+
+    if (this.cursor.up.isDown && this.coaxoch.body.touching.down)
+    {
+        this.coaxoch.setVelocityY(-330);
+    }
     }
 }
 
