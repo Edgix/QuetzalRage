@@ -10,7 +10,7 @@ class Nivel_1 extends Phaser.Scene{
     }
     preload() {
         this.load.path = "./assets/Objetos/";               //Ruta de Objetos(Inicia aqui cosas de la carpeta Objetos)
-        this.load.image(["tierra", "tierra_b"]);
+        this.load.image(["tierra", "tierra_b","Arrow"]);
         this.load.path = "./assets/escenarios/";            //Ruta Escenarios(Inicia aqui cosas de la carpeta Escenarios)
         this.load.image(["Nivel_1"])
         this.load.path = "./assets/personajes/";            //Ruta Personajes(Inicia aqui cosas de la carpeta Personajes)
@@ -22,9 +22,10 @@ class Nivel_1 extends Phaser.Scene{
         
         this.coaxoch = this.physics.add.sprite(200,200, 'Coaxoch');
         this.coaxoch.setDepth(1);
+        this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
-            repeat:23,
+            repeat:46,
             setXY:{
                 x:31,
                 y:684,
@@ -36,6 +37,19 @@ class Nivel_1 extends Phaser.Scene{
 
         }   );
 
+        this.grupo2=this.physics.add.staticGroup({
+            key:'tierra_b',
+            repeat:46,
+            setXY:{
+                x:31,
+                y:744,
+                stepX:64
+            }
+        });
+         this.grupo2.children.iterate((tierra_b)=>{
+             tierra_b.setDepth(1);
+
+        }   );
         
         //this.coaxoch.play('coaxorun_walk');
     
@@ -57,8 +71,9 @@ class Nivel_1 extends Phaser.Scene{
 
         }*/
 
-        this.Fondo = this.add.image(600, 500, "Nivel_1"); 
+        this.Fondo = this.add.image(850, 320, "Nivel_1"); 
         this.Fondo.setDepth(0);
+        this.Fondo.setScale(1.15);
 
         // Sección donde se Agregaran Fisicas
 
