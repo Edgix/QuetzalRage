@@ -19,13 +19,27 @@ class Nivel_1 extends Phaser.Scene{
         
     }
     create() {
-        var x=31;
         
         this.coaxoch = this.physics.add.sprite(200,200, 'Coaxoch');
         this.coaxoch.setDepth(1);
+        this.grupo=this.physics.add.staticGroup({
+            key:'tierra',
+            repeat:23,
+            setXY:{
+                x:31,
+                y:684,
+                stepX:64
+            }
+        });
+         this.grupo.children.iterate((tierra)=>{
+             tierra.setDepth(1);
+
+        }   );
+
+        
         //this.coaxoch.play('coaxorun_walk');
     
-        for(var i=0; i<=23;i++)
+       /*for(var i=0; i<=23;i++)
         {
         var y=684;
         this.tierra = this.physics.add.staticGroup();
@@ -41,14 +55,15 @@ class Nivel_1 extends Phaser.Scene{
         x+=64;
         this.tierra.setDepth(1); 
 
-        }
+        }*/
+
         this.Fondo = this.add.image(600, 500, "Nivel_1"); 
         this.Fondo.setDepth(0);
 
         // Sección donde se Agregaran Fisicas
 
         this.coaxoch.setBounce(.1);
-
+        this.physics.add.collider(this.coaxoch,this.grupo);
 
         // Fin Seccion Fisicas
 
