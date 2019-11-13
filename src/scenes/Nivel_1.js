@@ -23,6 +23,7 @@ class Nivel_1 extends Phaser.Scene{
         this.cursor= this.input.keyboard.createCursorKeys();
         this.coaxoch = this.physics.add.sprite(200,200, 'Coaxoch');
         this.coaxoch.setDepth(1);
+        this.coaxoch.setScale(1.2);
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
@@ -85,7 +86,7 @@ class Nivel_1 extends Phaser.Scene{
 
     if (this.cursor.up.isDown && this.coaxoch.body.touching.down)
     {
-        this.coaxoch.setVelocityY(-330);
+        this.coaxoch.setVelocityY(-310);
     }
     }
 }
