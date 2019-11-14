@@ -95,8 +95,15 @@ class Nivel_1 extends Phaser.Scene{
         this.soldado.setBounce(.1);
         this.coaxoch.setBounce(.1);
         this.physics.add.collider(this.soldado, this.grupo);
-        this.physics.add.collider(this.coaxoch, this.soldado);
-        this.grupo3.getChildren()[3].destroy();
+        this.physics.add.collider(this.coaxoch, this.soldado, function(coaxoch, soldado){
+            coaxoch.setTint(0xff0000);
+            this.grupo3.getChildren()[1].destroy();
+
+            setTimeout(() => {
+                coaxoch.setTint();
+            }, 150);
+        });
+        
         this.physics.add.collider(this.coaxoch,this.grupo);
 
         // Fin Seccion Fisicas
