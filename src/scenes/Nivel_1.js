@@ -10,7 +10,7 @@ class Nivel_1 extends Phaser.Scene{
     }
     preload() {
         this.load.path = "./assets/Objetos/";               //Ruta de Objetos(Inicia aqui cosas de la carpeta Objetos)
-        this.load.image(["tierra", "tierra_b","Arrow"]);
+        this.load.image(["tierra", "tierra_b","Arrow", "score", "vida"]);
         this.load.path = "./assets/escenarios/";            //Ruta Escenarios(Inicia aqui cosas de la carpeta Escenarios)
         this.load.image(["Nivel_1"])
         this.load.path = "./assets/personajes/";            //Ruta Personajes(Inicia aqui cosas de la carpeta Personajes)
@@ -21,6 +21,7 @@ class Nivel_1 extends Phaser.Scene{
     create() {
         const keyCodes= Phaser.Input.Keyboard.KeyCodes;
         this.cursor= this.input.keyboard.createCursorKeys();
+        this.score= this.add.image (100, 100, 'score');
         this.coaxoch = this.physics.add.sprite(200,200, 'Coaxoch');
         this.coaxoch.setDepth(1);
         this.coaxoch.setScale(1.2);
@@ -56,6 +57,32 @@ class Nivel_1 extends Phaser.Scene{
         this.Fondo = this.add.image(850, 320, "Nivel_1"); 
         this.Fondo.setDepth(0);
         this.Fondo.setScale(1.15);
+
+        this.score= this.add.image (200, 100, 'score');
+        this.score.setScale(3);
+
+        this.grupo3 = this.physics.add.staticGroup({
+            key: 'vida',
+            repeat: 3,
+            setXY: {
+            x: 130,
+            y: 80,
+            stepX: 50
+            }
+            });
+            this.grupo3.children.iterate( (vida) => {
+            //vida.setScale(4);
+            } );
+            //this.grupo2.playAnimation('vida');
+            this.add.tween({
+                targets: this.grupo3.getChildren(),
+                y: 90,
+                yoyo: true,
+                duration: 500,
+                repeat: -1,
+                easy: 'Power1'
+                });
+
 
         // Sección donde se Agregaran Fisicas
 
