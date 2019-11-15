@@ -10,6 +10,7 @@ class Nivel_1 extends Phaser.Scene{
     }
     preload() {
         this.load.path = "./assets/Objetos/";               //Ruta de Objetos(Inicia aqui cosas de la carpeta Objetos)
+        this.load.image('cacao', 'Cacao.png');
         this.load.image(["tierra", "tierra_b","Arrow", "score", "vida"]);
         this.load.path = "./assets/escenarios/";            //Ruta Escenarios(Inicia aqui cosas de la carpeta Escenarios)
         this.load.image(["Nivel_1"])
@@ -18,6 +19,7 @@ class Nivel_1 extends Phaser.Scene{
         this.load.atlas('soldado', 'soldado_atlas/soldado.png', 'soldado_atlas/soldado_atlas.json');
         this.load.animation('SoldadoAnim', 'soldado_atlas/soldado_anim.json');
         this.load.animation('CoaxochAnim', 'coaxoch_atlas/coaxoch_anim.json');
+        
         
     }
     create() {
@@ -35,7 +37,8 @@ class Nivel_1 extends Phaser.Scene{
         this.coaxoch.setScale(2);
         this.coaxoch.anims.play('coaxoch_static_walk');
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
-
+        this.cacao = this.physics.add.sprite(100,200, 'cacao');
+        this.cacao.setDepth(1);
 
 
         this.grupo=this.physics.add.staticGroup({
@@ -72,6 +75,21 @@ class Nivel_1 extends Phaser.Scene{
 
         this.score= this.add.image (200, 100, 'score');
         this.score.setScale(3);
+        this.grupo4 = this.physics.add.staticGroup({
+            
+            key: 'vida',
+            repeat: 0,
+            setXY: {
+            x: 230,
+            y: 80,
+            stepX: 50
+            
+            }
+            
+            });
+                        this.grupo4.setVisible=true;
+
+          
 
         this.grupo3 = this.physics.add.staticGroup({
             key: 'vida',
@@ -95,11 +113,23 @@ class Nivel_1 extends Phaser.Scene{
                 easy: 'Power1'
                 });
 
+                this.add.tween({
+                    targets: this.grupo4.getChildren(),
+                    y: 90,
+                    yoyo: true,
+                    duration: 500,
+                    repeat: -1,
+                    easy: 'Power1'
+                    });
+    
 
         // Sección donde se Agregaran Fisicas
         this.soldado.setBounce(.1);
         this.coaxoch.setBounce(.1);
+        this.physics.add.collider(this.cacao, this.grupo);
+        this.physics.add.collider(this.cacao, this.coaxoch);
         this.physics.add.collider(this.soldado, this.grupo);
+        
         this.physics.add.collider(this.coaxoch, this.soldado, (coaxoch, soldado)=>{
             var contador
             coaxoch.setTint(0xff0000);
@@ -111,9 +141,23 @@ class Nivel_1 extends Phaser.Scene{
                 coaxoch.setTint();
             }, 150);
         });
+        this.physics.add.collider(this.cacao, this.coaxoch, (cacao, coaxoch)=>{
+            var contador
+            coaxoch.setTint(0xff0000);
+            coaxoch.setX(300);
+           // easy: 'bounce';
+           
+            this.grupo4.getChildren()[2];
+            this.grupo4.setVisible=false;
+            setTimeout(() => {
+                coaxoch.setTint();
+            }, 150);
+        }); 
+       
         
         this.physics.add.collider(this.coaxoch,this.grupo);
-
+        this.physics.add.collider(this.cacao,this.grupo);
+        
         // Fin Seccion Fisicas
 
 
