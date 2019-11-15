@@ -29,6 +29,7 @@ class Nivel_1 extends Phaser.Scene{
         this.soldado.setScale(1.2);
         this.soldado.body.setSize(this.soldado.width,this.soldado.height,true);
         this.coaxoch = this.physics.add.sprite(200,200, 'Coaxoch');
+        this.coaxoch.body.setSize(20,20);
         this.coaxoch.setDepth(1);
         this.coaxoch.setScale(1.2);
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
@@ -70,7 +71,7 @@ class Nivel_1 extends Phaser.Scene{
 
         this.grupo3 = this.physics.add.staticGroup({
             key: 'vida',
-            repeat: 3,
+            repeat: 2,
             setXY: {
             x: 130,
             y: 80,
@@ -95,9 +96,12 @@ class Nivel_1 extends Phaser.Scene{
         this.soldado.setBounce(.1);
         this.coaxoch.setBounce(.1);
         this.physics.add.collider(this.soldado, this.grupo);
-        this.physics.add.collider(this.coaxoch, this.soldado, function(coaxoch, soldado){
+        this.physics.add.collider(this.coaxoch, this.soldado, (coaxoch, soldado)=>{
+            var contador
             coaxoch.setTint(0xff0000);
-            this.grupo3.getChildren()[1].destroy();
+            coaxoch.setX(300);
+           // easy: 'bounce';
+            this.grupo3.getChildren()[2].destroy();
 
             setTimeout(() => {
                 coaxoch.setTint();
