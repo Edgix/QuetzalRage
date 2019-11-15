@@ -1,30 +1,70 @@
 {
     "anims": [
         {
-            "key": "coaxorun_walk",
+            "key": "coaxoch_static_walk",
             "type": "frames",
             "repeat": -1,
-            "frameRate": 10,
+            "frameRate": 7,
             "frames": [
                 {
                     "key": "coaxoch",
-                    "frame": "coaxorun0"
+                    "frame": "coaxoch0"
                 },
                 {
                     "key": "coaxoch",
-                    "frame": "coaxorun1"
+                    "frame": "coaxoch1"
                 },
                 {
                     "key": "coaxoch",
-                    "frame": "coaxorun2"
+                    "frame": "coaxoch2"
+                }
+            ]
+        },
+        {
+            "key": "coaxoch_static_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 7,
+            "frames": [
+                {
+                    "key": "coaxoch",
+                    "frame": "coaxoch3"
+                }
+            ]
+        },
+        {
+            "key": "coaxorun_walk",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 7,
+            "frames": [
+                {
+                    "key": "coaxoch",
+                    "frame": "coaxochrun0"
                 },
                 {
                     "key": "coaxoch",
-                    "frame": "coaxorun3"
+                    "frame": "coaxochrun1"
                 },
                 {
                     "key": "coaxoch",
-                    "frame": "coaxorun4"
+                    "frame": "coaxochrun2"
+                },
+                {
+                    "key": "coaxoch",
+                    "frame": "coaxochrun3"
+                },
+                {
+                    "key": "coaxoch",
+                    "frame": "coaxochrun4"
+                },
+                {
+                    "key": "coaxoch",
+                    "frame": "coaxochrun5"
+                },
+                {
+                    "key": "coaxoch",
+                    "frame": "coaxochrun6"
                 }
             ]
         },
@@ -32,43 +72,11 @@
             "key": "coaxorun_idle",
             "type": "frames",
             "repeat": -1,
-            "frameRate": 10,
+            "frameRate": 7,
             "frames": [
                 {
                     "key": "coaxoch",
-                    "frame": "coaxorun0"
-                }
-            ]
-        },
-        {
-            "key": "coaxostatic_walk",
-            "type": "frames",
-            "repeat": -1,
-            "frameRate": 6,
-            "frames": [
-                {
-                    "key": "coaxoch",
-                    "frame": "coaxo_static0"
-                },
-                {
-                    "key": "coaxoch",
-                    "frame": "coaxo_static1"
-                },
-                {
-                    "key": "coaxoch",
-                    "frame": "coaxo_static2"
-                }
-            ]
-        },
-        {
-            "key": "coaxostatic_idle",
-            "type": "frames",
-            "repeat": -1,
-            "frameRate": 6,
-            "frames": [
-                {
-                    "key": "coaxoch",
-                    "frame": "coaxo_static3"
+                    "frame": "coaxochrun0"
                 }
             ]
         }

@@ -1,12 +1,12 @@
 {
     "frames": [
         {
-            "filename": "coaxorun0",
+            "filename": "coaxochrun0",
             "frame": {
                 "x": 1,
                 "y": 1,
-                "w": 64,
-                "h": 64
+                "w": 52,
+                "h": 52
             },
             "anchor": {
                 "x": 0.5,
@@ -14,12 +14,12 @@
             }
         },
         {
-            "filename": "coaxorun1",
+            "filename": "coaxochrun1",
             "frame": {
-                "x": 67,
+                "x": 55,
                 "y": 1,
-                "w": 64,
-                "h": 64
+                "w": 52,
+                "h": 52
             },
             "anchor": {
                 "x": 0.5,
@@ -27,12 +27,12 @@
             }
         },
         {
-            "filename": "coaxorun2",
+            "filename": "coaxochrun2",
             "frame": {
-                "x": 133,
+                "x": 109,
                 "y": 1,
-                "w": 64,
-                "h": 64
+                "w": 52,
+                "h": 52
             },
             "anchor": {
                 "x": 0.5,
@@ -40,12 +40,12 @@
             }
         },
         {
-            "filename": "coaxorun3",
+            "filename": "coaxochrun3",
             "frame": {
-                "x": 199,
+                "x": 163,
                 "y": 1,
-                "w": 64,
-                "h": 64
+                "w": 52,
+                "h": 52
             },
             "anchor": {
                 "x": 0.5,
@@ -53,12 +53,12 @@
             }
         },
         {
-            "filename": "coaxorun4",
+            "filename": "coaxochrun4",
             "frame": {
-                "x": 265,
+                "x": 217,
                 "y": 1,
-                "w": 64,
-                "h": 64
+                "w": 52,
+                "h": 52
             },
             "anchor": {
                 "x": 0.5,
@@ -66,12 +66,12 @@
             }
         },
         {
-            "filename": "coaxorun5",
+            "filename": "coaxochrun5",
             "frame": {
-                "x": 331,
+                "x": 271,
                 "y": 1,
-                "w": 64,
-                "h": 64
+                "w": 52,
+                "h": 52
             },
             "anchor": {
                 "x": 0.5,
@@ -79,12 +79,38 @@
             }
         },
         {
-            "filename": "coaxo_static0",
+            "filename": "coaxochrun6",
+            "frame": {
+                "x": 325,
+                "y": 1,
+                "w": 52,
+                "h": 52
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coaxochrun7",
+            "frame": {
+                "x": 379,
+                "y": 1,
+                "w": 52,
+                "h": 52
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coaxoch0",
             "frame": {
                 "x": 1,
-                "y": 67,
-                "w": 64,
-                "h": 64
+                "y": 55,
+                "w": 51,
+                "h": 51
             },
             "anchor": {
                 "x": 0.5,
@@ -92,12 +118,12 @@
             }
         },
         {
-            "filename": "coaxo_static1",
+            "filename": "coaxoch1",
             "frame": {
-                "x": 67,
-                "y": 67,
-                "w": 64,
-                "h": 64
+                "x": 54,
+                "y": 55,
+                "w": 51,
+                "h": 51
             },
             "anchor": {
                 "x": 0.5,
@@ -105,12 +131,12 @@
             }
         },
         {
-            "filename": "coaxo_static2",
+            "filename": "coaxoch2",
             "frame": {
-                "x": 133,
-                "y": 67,
-                "w": 64,
-                "h": 64
+                "x": 107,
+                "y": 55,
+                "w": 51,
+                "h": 51
             },
             "anchor": {
                 "x": 0.5,
@@ -118,12 +144,12 @@
             }
         },
         {
-            "filename": "coaxo_static3",
+            "filename": "coaxoch3",
             "frame": {
-                "x": 199,
-                "y": 67,
-                "w": 64,
-                "h": 64
+                "x": 160,
+                "y": 55,
+                "w": 51,
+                "h": 51
             },
             "anchor": {
                 "x": 0.5,

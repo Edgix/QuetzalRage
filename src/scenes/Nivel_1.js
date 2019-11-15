@@ -14,7 +14,7 @@ class Nivel_1 extends Phaser.Scene{
         this.load.path = "./assets/escenarios/";            //Ruta Escenarios(Inicia aqui cosas de la carpeta Escenarios)
         this.load.image(["Nivel_1"])
         this.load.path = "./assets/personajes/";            //Ruta Personajes(Inicia aqui cosas de la carpeta Personajes)
-        this.load.atlas('Coaxoch', 'coaxoch_atlas/coaxoch.png','coaxoch_atlas/coaxoch_atlas.json');
+        this.load.atlas('coaxoch', 'coaxoch_atlas/coaxoch.png','coaxoch_atlas/coaxoch_atlas.json');
         this.load.atlas('soldado', 'soldado_atlas/soldado.png', 'soldado_atlas/soldado_atlas.json');
         this.load.animation('SoldadoAnim', 'soldado_atlas/soldado_anim.json');
         this.load.animation('CoaxochAnim', 'coaxoch_atlas/coaxoch_anim.json');
@@ -26,13 +26,17 @@ class Nivel_1 extends Phaser.Scene{
         this.score= this.add.image (100, 100, 'score');
         this.soldado = this.physics.add.sprite(500,200, 'soldado');
         this.soldado.setDepth(1);
-        this.soldado.setScale(1.2);
+        this.soldado.setScale(2);
+        this.soldado.anims.play('soldadostatic_walk');
         this.soldado.body.setSize(this.soldado.width,this.soldado.height,true);
-        this.coaxoch = this.physics.add.sprite(200,200, 'Coaxoch');
+        this.coaxoch = this.physics.add.sprite(200,200, 'coaxoch');
         this.coaxoch.body.setSize(20,20);
         this.coaxoch.setDepth(1);
-        this.coaxoch.setScale(1.2);
+        this.coaxoch.setScale(2);
+        this.coaxoch.anims.play('coaxoch_static_walk');
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
+
+
 
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
@@ -112,24 +116,30 @@ class Nivel_1 extends Phaser.Scene{
 
         // Fin Seccion Fisicas
 
-        
+
 
     }
     update(time, delta) {
-    
+
         if (this.cursor.left.isDown)
     {
         this.coaxoch.setVelocityX(-160);
         this.coaxoch.flipX=true;
+        this.coaxoch.anims.play('coaxorun_walk');
+
     }
+
     else if (this.cursor.right.isDown)
     {
         this.coaxoch.setVelocityX(160);
         this.coaxoch.flipX=false;
+        this.coaxoch.anims.play('coaxorun_walk');
+
     }
     else
     {
         this.coaxoch.setVelocityX(0);
+
     }
 
     if (this.cursor.up.isDown && this.coaxoch.body.touching.down)
