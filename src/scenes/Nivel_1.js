@@ -30,13 +30,14 @@ class Nivel_1 extends Phaser.Scene{
         this.soldado.anims.play('soldadostatic_walk');
         this.soldado.body.setSize(this.soldado.width,this.soldado.height,true);
         this.coaxoch = this.physics.add.sprite(200,200, 'coaxoch');
-        this.coaxoch.body.setSize(20,20);
         this.coaxoch.setDepth(1);
         this.coaxoch.setScale(2);
+        this.soldado.body.setSize(34,38);
+        this.soldado.body.setOffset(17,15);    
         this.coaxoch.anims.play('coaxoch_static_walk');
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
-
-
+        this.coaxoch.body.setSize(37.5,49);
+        this.coaxoch.body.setOffset(4,2);
 
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
@@ -100,13 +101,14 @@ class Nivel_1 extends Phaser.Scene{
         this.soldado.setBounce(.1);
         this.coaxoch.setBounce(.1);
         this.physics.add.collider(this.soldado, this.grupo);
+        var contador =2;    
         this.physics.add.collider(this.coaxoch, this.soldado, (coaxoch, soldado)=>{
-            var contador
+           
             coaxoch.setTint(0xff0000);
-            coaxoch.setX(300);
-           // easy: 'bounce';
-            this.grupo3.getChildren()[2].destroy();
-
+            soldado.setVelocityX(1000)
+            easy: 'bounce';
+            this.grupo3.getChildren()[contador].destroy();
+            contador--;
             setTimeout(() => {
                 coaxoch.setTint();
             }, 150);
