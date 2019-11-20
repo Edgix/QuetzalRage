@@ -13,7 +13,7 @@ class Nivel_1 extends Phaser.Scene{
         this.load.image('cacao', 'Cacao.png');
         this.load.image(["tierra", "tierra_b","Arrow", "score", "vida"]);
         this.load.path = "./assets/escenarios/";            //Ruta Escenarios(Inicia aqui cosas de la carpeta Escenarios)
-        this.load.image(["Nivel_1"])
+        this.load.image(["Nivel_1"]);
         this.load.path = "./assets/personajes/";            //Ruta Personajes(Inicia aqui cosas de la carpeta Personajes)
         this.load.atlas('coaxoch', 'coaxoch_atlas/coaxoch.png','coaxoch_atlas/coaxoch_atlas.json');
         this.load.atlas('soldado', 'soldado_atlas/soldado.png', 'soldado_atlas/soldado_atlas.json');
