@@ -113,7 +113,7 @@ class Nivel_2 extends Phaser.Scene{
             coaxoch.setTint(0xff0000);
             soldado.setVelocityX(1000)
             easy: 'bounce';
-            this.grupo3.getChildren()[contador].destroy();
+            this.grupo3.getChildren()[contador].setVisible(false);
             contador--;
             setTimeout(() => {
                 coaxoch.setTint();
@@ -124,11 +124,10 @@ class Nivel_2 extends Phaser.Scene{
         this.physics.add.collider(this.cacao, this.coaxoch);
         this.physics.add.collider(this.coaxoch,this.grupo);
         this.physics.add.collider(this.cacao, this.coaxoch, (cacao, coaxoch)=>{
-            var contador
             coaxoch.setTint(0x0000ff);
-           //- coaxoch.setX();+
-           // easy: 'bounce';
-           
+            contador++;
+           this.grupo3.getChildren()[contador].setVisible(true);
+            
             //this.grupo4.getChildren()[2];
            // this.grupo4.setVisible(true);
            this.cacao.destroy();
