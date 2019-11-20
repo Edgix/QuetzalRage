@@ -32,8 +32,10 @@ class Nivel_2 extends Phaser.Scene{
         this.coaxoch = this.physics.add.sprite(200,200, 'coaxoch');
         this.coaxoch.setDepth(1);
         this.coaxoch.setScale(2);
+        this.coaxoch.body.setCollideWorldBounds(true);
         this.soldado.body.setSize(34,38);
-        this.soldado.body.setOffset(17,15);    
+        this.soldado.body.setOffset(17,15);   
+        this.soldado.body.setCollideWorldBounds(true); 
         this.coaxoch.anims.play('coaxoch_static_walk');
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
         this.coaxoch.body.setSize(37.5,49);
@@ -123,12 +125,13 @@ class Nivel_2 extends Phaser.Scene{
         this.physics.add.collider(this.coaxoch,this.grupo);
         this.physics.add.collider(this.cacao, this.coaxoch, (cacao, coaxoch)=>{
             var contador
-            coaxoch.setTint(0xff0000);
-            coaxoch.setX(300);
+            coaxoch.setTint(0x0000ff);
+           //- coaxoch.setX();+
            // easy: 'bounce';
            
             //this.grupo4.getChildren()[2];
-            this.grupo4.setVisible=false;
+           // this.grupo4.setVisible(true);
+           this.cacao.destroy();
             setTimeout(() => {
                 coaxoch.setTint();
             }, 150);
