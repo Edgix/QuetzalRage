@@ -1,19 +1,18 @@
-class Nivel_1 extends Phaser.Scene{
+class Nivel_2 extends Phaser.Scene{
     constructor(){
         super({
-            key: "Nivel_1" //Nombre interno o clave de referencia
+            key: "Nivel_2" //Nombre interno o clave de referencia
         });
     }
 
     init() {
-        console.log("Escena Nivel 1");
+        console.log("Escena Nivel 2");
     }
     preload() {
         this.load.path = "./assets/Objetos/";               //Ruta de Objetos(Inicia aqui cosas de la carpeta Objetos)
-        this.load.image(["tierra", "tierra_b","Arrow", "score", "vida"]);
-        this.load.image('cacao', 'Cacao.png');
+        this.load.image(["tierra", "tierra_b","Arrow", "score", "vida", "cacao"]);
         this.load.path = "./assets/escenarios/";            //Ruta Escenarios(Inicia aqui cosas de la carpeta Escenarios)
-        this.load.image(["Nivel_1"])
+        this.load.image(["Nivel_2"])
         this.load.path = "./assets/personajes/";            //Ruta Personajes(Inicia aqui cosas de la carpeta Personajes)
         this.load.atlas('coaxoch', 'coaxoch_atlas/coaxoch.png','coaxoch_atlas/coaxoch_atlas.json');
         this.load.atlas('soldado', 'soldado_atlas/soldado.png', 'soldado_atlas/soldado_atlas.json');
@@ -43,6 +42,7 @@ class Nivel_1 extends Phaser.Scene{
         this.cacao.body.setCircle(20);
         this.cacao.setDepth(1);
 
+
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
             repeat:46,
@@ -71,9 +71,9 @@ class Nivel_1 extends Phaser.Scene{
 
         }   );
 
-        this.Fondo = this.add.image(850, 320, "Nivel_1"); 
+        this.Fondo = this.add.image(850, 320, "Nivel_2"); 
         this.Fondo.setDepth(0);
-        this.Fondo.setScale(1.15);
+        this.Fondo.setScale(1.2);
 
         this.score= this.add.image (100,70, 'score');
         this.score.setScale(2);
@@ -117,6 +117,7 @@ class Nivel_1 extends Phaser.Scene{
                 coaxoch.setTint();
             }, 150);
         });
+        
         this.physics.add.collider(this.cacao, this.grupo);
         this.physics.add.collider(this.cacao, this.coaxoch);
         this.physics.add.collider(this.coaxoch,this.grupo);
@@ -126,7 +127,7 @@ class Nivel_1 extends Phaser.Scene{
             coaxoch.setX(300);
            // easy: 'bounce';
            
-            this.grupo4.getChildren()[2];
+            //this.grupo4.getChildren()[2];
             this.grupo4.setVisible=false;
             setTimeout(() => {
                 coaxoch.setTint();
@@ -168,8 +169,9 @@ class Nivel_1 extends Phaser.Scene{
     if (this.cursor.up.isDown && this.coaxoch.body.touching.down)
     {
         this.coaxoch.setVelocityY(-350);
+        
     }
     }
 }
 
-export default Nivel_1;
+export default Nivel_2;
