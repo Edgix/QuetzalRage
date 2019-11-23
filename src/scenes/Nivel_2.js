@@ -21,6 +21,8 @@ class Nivel_2 extends Phaser.Scene{
         
     }
     create() {
+        this.scene.launch('SceneScore');
+        this.scene.launch('SceneVida');
         const keyCodes= Phaser.Input.Keyboard.KeyCodes;
         this.cursor= this.input.keyboard.createCursorKeys();
         this.score= this.add.image (100, 100, 'score');
