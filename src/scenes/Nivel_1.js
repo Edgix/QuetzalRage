@@ -21,7 +21,6 @@ class Nivel_1 extends Phaser.Scene{
         
     }
     create() {
-        this.scene.launch('SceneScore');
         this.scene.launch('SceneVida');
         this.halberd = this.physics.add.image(200,200,'halberd');
         this.halberd.setDepth(3);
@@ -80,21 +79,55 @@ class Nivel_1 extends Phaser.Scene{
         // Sección donde se Agregaran Fisicas
         this.soldado.setBounce(.1);
         this.coaxoch.setBounce(.1);
-        var contador =2;    
-        var contf =0;
-
-        this.physics.add.collider(this.coaxoch, this.soldado, (coaxoch, soldado)=>{
+        this.enemi1= this.physics.add.collider(this.coaxoch, this.soldado, (coaxoch, soldado)=>{
            
             coaxoch.setTint(0xff0000);
-            soldado.setVelocityX(1000)
-            easy: 'bounce';
-            this.grupo3.getChildren()[contador].setVisible(false);
-            contador--;
-            setTimeout(() => {
+           
+
+            if(soldado.body.touching.left){
+                coaxoch.setVelocityY(-100);
+                coaxoch.setVelocityX(1000);
+                soldado.setVelocityX(1000);
+            }
+            if(soldado.body.touching.right)
+            {
+                coaxoch.setVelocityY(-100);
+                coaxoch.setVelocityX(1000000);
+                soldado.setVelocityX(-1000);
+            }
+            this.registry.events.emit('evento',1);
+            this.enemi1.active =false;               
+             setTimeout(() => {
                 coaxoch.setTint();
-            }, 1500);
+                this.enemi1.active =true;
+                soldado.setVelocityX(0);
+                coaxoch.setVelocityX(0); 
+            }, 150);
             
         });
+        var contf=0;
+        this.flechas = this.physics.add.group();
+        this.lluvia = this.time.addEvent({
+
+        delay: 100,
+        callback: () =>{
+            var random = Phaser.Math.Between(0,4);
+            var x = Phaser.Math.Between(0,1500);
+            switch(random)
+            {
+                case 0:
+                        this.flecha = this.flechas.create(x,-100,'Arrow').setScale(1);
+                        this.flecha.setDepth(1);
+                        this.flecha.angle = 50;
+                        this.flecha.body.setSize(7,7).setOffset(23,45);
+                        this.flecha.body.rotation=20;
+                       
+                break;
+            }
+        },
+        repeat:-1
+    })
+       
         this.physics.add.collider(this.grupo, this.flechas, (coaxoch, soldado)=>{
             this.flechas.getChildren()[contf].body.enable = false;
             if(contf==10)
@@ -139,8 +172,9 @@ class Nivel_1 extends Phaser.Scene{
         this.coaxoch.body.setOffset(4,2);
 
     }
-    else
+    else if (this.coaxoch.body.touching.down)
     {
+        
         this.coaxoch.setVelocityX(0);
         this.coaxoch.anims.play('coaxoch_static_walk',true)
     }

@@ -31,27 +31,14 @@ class SceneVida extends Phaser.Scene{
                 repeat: -1,
                 easy: 'Power1'
                 });
-                this.flechas = this.physics.add.group();
-                this.lluvia = this.time.addEvent({
-
-                delay: 100,
-                callback: () =>{
-                    var random = Phaser.Math.Between(0,4);
-                    var x = Phaser.Math.Between(0,1500);
-                    switch(random)
-                    {
-                        case 0:
-                                this.flecha = this.flechas.create(x,-100,'Arrow').setScale(1);
-                                this.flecha.setDepth(1);
-                                this.flecha.angle = 50;
-                                this.flecha.body.setSize(7,7).setOffset(23,45);
-                                this.flecha.body.rotation=20;
-                               
-                        break;
-                    }
-                },
-                repeat:-1
-            })
+                var contador = 2;
+                this.registry.events.on('evento',(dato)=>{
+                   if(dato == 1)
+                   {
+                    this.grupo3.getChildren()[contador].setVisible(false);
+                    contador--;
+                   }
+                });
 
     }
     update(time, delta) {
