@@ -22,17 +22,17 @@ class Nivel_1 extends Phaser.Scene{
     }
     create() {
         this.scene.launch('SceneVida');
-        this.halberd = this.physics.add.image(200,200,'halberd');
+        this.halberd = this.physics.add.image(350,200,'halberd');
         this.halberd.setDepth(3);
         this.halberd.setScale(1.5);
         const keyCodes= Phaser.Input.Keyboard.KeyCodes;
         this.cursor= this.input.keyboard.createCursorKeys();
-        this.soldado = this.physics.add.sprite(500,200, 'soldado');
+        this.soldado = this.physics.add.sprite(600,200, 'soldado');
         this.soldado.setDepth(1);
         this.soldado.setScale(2);
         this.soldado.anims.play('soldadostatic_walk');
         this.soldado.body.setSize(this.soldado.width,this.soldado.height,true);
-        this.coaxoch = this.physics.add.sprite(200,200, 'coaxoch');
+        this.coaxoch = this.physics.add.sprite(350,200, 'coaxoch');
         this.coaxoch.setDepth(1);
         this.coaxoch.setScale(2);
         this.soldado.body.setSize(34,38);
@@ -75,15 +75,16 @@ class Nivel_1 extends Phaser.Scene{
             repeat:0,
             setXY:{
                 x:31,
-                y:570,
+                y:580,
                 stepX:64
             }
         });
-        this.grupo4.children.iterate((tierra)=>{
-            tierra.setDepth(1);
-
-       }   );
-
+                
+                this.grupo4.children.iterate((tierra)=>{
+                    tierra.setDepth(1);
+    
+            }   );
+        
        this.grupo5=this.physics.add.staticGroup({
         key:'tierra',
         repeat:1,
@@ -196,13 +197,8 @@ class Nivel_1 extends Phaser.Scene{
         });
         var contf=0;
         this.flechas = this.physics.add.group();
-        this.flechas = this.physics.add.grupo4();
-        this.flechas = this.physics.add.grupo5();
-        this.flechas = this.physics.add.grupo6();
-        this.flechas = this.physics.add.grupo7();
-        this.flechas = this.physics.add.grupo8();
-        this.flechas = this.physics.add.grupo9();
-        this.flechas = this.physics.add.grupo10();
+
+
 
         this.lluvia = this.time.addEvent({
 
@@ -236,83 +232,7 @@ class Nivel_1 extends Phaser.Scene{
             
         });
          
-        
-        this.physics.add.collider(this.grupo4, this.flechas, (coaxoch, soldado)=>{
-            this.flechas.getChildren()[contf].body.enable = false;
-            if(contf==1)
-            {
-                this.flechas.getChildren()[contf-1].destroy();
-                contf--;
-            }
-            contf++;
-            
-        });
-
-        this.physics.add.collider(this.grupo5, this.flechas, (coaxoch, soldado)=>{
-            this.flechas.getChildren()[contf].body.enable = false;
-            if(contf==2)
-            {
-                this.flechas.getChildren()[contf-1].destroy();
-                contf--;
-            }
-            contf++;
-            
-        });
-
-        this.physics.add.collider(this.grupo6, this.flechas, (coaxoch, soldado)=>{
-            this.flechas.getChildren()[contf].body.enable = false;
-            if(contf==2)
-            {
-                this.flechas.getChildren()[contf-2].destroy();
-                contf--;
-            }
-            contf++;
-            
-        });
-
-        this.physics.add.collider(this.grupo7, this.flechas, (coaxoch, soldado)=>{
-            this.flechas.getChildren()[contf].body.enable = false;
-            if(contf==4)
-            {
-                this.flechas.getChildren()[contf-4].destroy();
-                contf--;
-            }
-            contf++;
-            
-        });
-
-        this.physics.add.collider(this.grupo8, this.flechas, (coaxoch, soldado)=>{
-            this.flechas.getChildren()[contf].body.enable = false;
-            if(contf==2)
-            {
-                this.flechas.getChildren()[contf-2].destroy();
-                contf--;
-            }
-            contf++;
-            
-        });
-
-        this.physics.add.collider(this.grupo9, this.flechas, (coaxoch, soldado)=>{
-            this.flechas.getChildren()[contf].body.enable = false;
-            if(contf==2)
-            {
-                this.flechas.getChildren()[contf-2].destroy();
-                contf--;
-            }
-            contf++;
-            
-        });
-
-        this.physics.add.collider(this.grupo10, this.flechas, (coaxoch, soldado)=>{
-            this.flechas.getChildren()[contf].body.enable = false;
-            if(contf==2)
-            {
-                this.flechas.getChildren()[contf-2].destroy();
-                contf--;
-            }
-            contf++;
-            
-        });
+       
 
         this.physics.add.collider(this.coaxoch,this.flechas,(coaxoch,flechas) => {
             this.flechas.getChildren()[contf].body.enable = false;
@@ -323,7 +243,8 @@ class Nivel_1 extends Phaser.Scene{
         this.physics.add.collider(this.coaxoch,this.grupo);
         this.physics.add.collider(this.halberd,this.grupo);
         this.physics.add.collider(this.soldado,this.grupo);
-        this.physics.add.collider(this.coaxoch,this.grupo4);
+
+       this.physics.add.collider(this.coaxoch,this.grupo4);
         this.physics.add.collider(this.halberd,this.grupo4);
         this.physics.add.collider(this.soldado,this.grupo4);
         this.physics.add.collider(this.coaxoch,this.grupo5);
@@ -331,8 +252,7 @@ class Nivel_1 extends Phaser.Scene{
         this.physics.add.collider(this.soldado,this.grupo5);
         this.physics.add.collider(this.coaxoch,this.grupo6);
         this.physics.add.collider(this.halberd,this.grupo6);
-        this.physics.add.collider(this.soldado,this.grupo6);
-        
+        this.physics.add.collider(this.soldado,this.grupo6); 
         this.physics.add.collider(this.coaxoch,this.grupo7);
         this.physics.add.collider(this.halberd,this.grupo7);
         this.physics.add.collider(this.soldado,this.grupo7);
@@ -342,9 +262,7 @@ class Nivel_1 extends Phaser.Scene{
         this.physics.add.collider(this.coaxoch,this.grupo9);
         this.physics.add.collider(this.halberd,this.grupo9);
         this.physics.add.collider(this.soldado,this.grupo9);
-        this.physics.add.collider(this.coaxoch,this.grupo10);
-        this.physics.add.collider(this.halberd,this.grupo10);
-        this.physics.add.collider(this.soldado,this.grupo10);
+
                    
         // Fin Seccion Fisicas
 
