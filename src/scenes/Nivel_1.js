@@ -41,6 +41,7 @@ class Nivel_1 extends Phaser.Scene{
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
         this.coaxoch.body.setSize(37.5,49);
         this.coaxoch.body.setOffset(4,2);
+    
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
             repeat:46,
@@ -68,6 +69,94 @@ class Nivel_1 extends Phaser.Scene{
              tierra_b.setDepth(1);
 
         }   );
+
+        this.grupo4=this.physics.add.staticGroup({
+            key:'tierra',
+            repeat:0,
+            setXY:{
+                x:31,
+                y:570,
+                stepX:64
+            }
+        });
+        this.grupo4.children.iterate((tierra)=>{
+            tierra.setDepth(1);
+
+       }   );
+
+       this.grupo5=this.physics.add.staticGroup({
+        key:'tierra',
+        repeat:1,
+        setXY:{
+            x:200,
+            y:490,
+            stepX:64
+        }
+    });
+            
+            this.grupo5.children.iterate((tierra)=>{
+                tierra.setDepth(1);
+
+        }   );
+
+        this.grupo6=this.physics.add.staticGroup({
+            key:'tierra',
+            repeat:1,
+            setXY:{
+                x:430,
+                y:400,
+                stepX:64
+            }
+        });
+        this.grupo6.children.iterate((tierra)=>{
+            tierra.setDepth(1);
+
+        }   );
+
+
+        this.grupo7=this.physics.add.staticGroup({
+            key:'tierra',
+            repeat:3,
+            setXY:{
+                x:680,
+                y:320,
+                stepX:64
+            }
+        });
+        this.grupo7.children.iterate((tierra)=>{
+            tierra.setDepth(1);
+
+        }   );
+
+        
+        this.grupo8=this.physics.add.staticGroup({
+            key:'tierra',
+            repeat:1,
+            setXY:{
+                x:1050,
+                y:400,
+                stepX:64
+            }
+        });
+        this.grupo8.children.iterate((tierra)=>{
+            tierra.setDepth(1);
+
+        }   );
+
+        this.grupo9=this.physics.add.staticGroup({
+            key:'tierra',
+            repeat:1,
+            setXY:{
+                x:1290,
+                y:490,
+                stepX:64
+            }
+        });
+        this.grupo9.children.iterate((tierra)=>{
+            tierra.setDepth(1);
+
+        }   );
+
 
         this.Fondo = this.add.image(850, 320, "Nivel_1"); 
         this.Fondo.setDepth(0);
@@ -107,6 +196,14 @@ class Nivel_1 extends Phaser.Scene{
         });
         var contf=0;
         this.flechas = this.physics.add.group();
+        this.flechas = this.physics.add.grupo4();
+        this.flechas = this.physics.add.grupo5();
+        this.flechas = this.physics.add.grupo6();
+        this.flechas = this.physics.add.grupo7();
+        this.flechas = this.physics.add.grupo8();
+        this.flechas = this.physics.add.grupo9();
+        this.flechas = this.physics.add.grupo10();
+
         this.lluvia = this.time.addEvent({
 
         delay: 100,
@@ -138,6 +235,84 @@ class Nivel_1 extends Phaser.Scene{
             contf++;
             
         });
+         
+        
+        this.physics.add.collider(this.grupo4, this.flechas, (coaxoch, soldado)=>{
+            this.flechas.getChildren()[contf].body.enable = false;
+            if(contf==1)
+            {
+                this.flechas.getChildren()[contf-1].destroy();
+                contf--;
+            }
+            contf++;
+            
+        });
+
+        this.physics.add.collider(this.grupo5, this.flechas, (coaxoch, soldado)=>{
+            this.flechas.getChildren()[contf].body.enable = false;
+            if(contf==2)
+            {
+                this.flechas.getChildren()[contf-1].destroy();
+                contf--;
+            }
+            contf++;
+            
+        });
+
+        this.physics.add.collider(this.grupo6, this.flechas, (coaxoch, soldado)=>{
+            this.flechas.getChildren()[contf].body.enable = false;
+            if(contf==2)
+            {
+                this.flechas.getChildren()[contf-2].destroy();
+                contf--;
+            }
+            contf++;
+            
+        });
+
+        this.physics.add.collider(this.grupo7, this.flechas, (coaxoch, soldado)=>{
+            this.flechas.getChildren()[contf].body.enable = false;
+            if(contf==4)
+            {
+                this.flechas.getChildren()[contf-4].destroy();
+                contf--;
+            }
+            contf++;
+            
+        });
+
+        this.physics.add.collider(this.grupo8, this.flechas, (coaxoch, soldado)=>{
+            this.flechas.getChildren()[contf].body.enable = false;
+            if(contf==2)
+            {
+                this.flechas.getChildren()[contf-2].destroy();
+                contf--;
+            }
+            contf++;
+            
+        });
+
+        this.physics.add.collider(this.grupo9, this.flechas, (coaxoch, soldado)=>{
+            this.flechas.getChildren()[contf].body.enable = false;
+            if(contf==2)
+            {
+                this.flechas.getChildren()[contf-2].destroy();
+                contf--;
+            }
+            contf++;
+            
+        });
+
+        this.physics.add.collider(this.grupo10, this.flechas, (coaxoch, soldado)=>{
+            this.flechas.getChildren()[contf].body.enable = false;
+            if(contf==2)
+            {
+                this.flechas.getChildren()[contf-2].destroy();
+                contf--;
+            }
+            contf++;
+            
+        });
 
         this.physics.add.collider(this.coaxoch,this.flechas,(coaxoch,flechas) => {
             this.flechas.getChildren()[contf].body.enable = false;
@@ -147,8 +322,30 @@ class Nivel_1 extends Phaser.Scene{
         });
         this.physics.add.collider(this.coaxoch,this.grupo);
         this.physics.add.collider(this.halberd,this.grupo);
-        this.physics.add.collider(this.soldado, this.grupo);
-           
+        this.physics.add.collider(this.soldado,this.grupo);
+        this.physics.add.collider(this.coaxoch,this.grupo4);
+        this.physics.add.collider(this.halberd,this.grupo4);
+        this.physics.add.collider(this.soldado,this.grupo4);
+        this.physics.add.collider(this.coaxoch,this.grupo5);
+        this.physics.add.collider(this.halberd,this.grupo5);
+        this.physics.add.collider(this.soldado,this.grupo5);
+        this.physics.add.collider(this.coaxoch,this.grupo6);
+        this.physics.add.collider(this.halberd,this.grupo6);
+        this.physics.add.collider(this.soldado,this.grupo6);
+        
+        this.physics.add.collider(this.coaxoch,this.grupo7);
+        this.physics.add.collider(this.halberd,this.grupo7);
+        this.physics.add.collider(this.soldado,this.grupo7);
+        this.physics.add.collider(this.coaxoch,this.grupo8);
+        this.physics.add.collider(this.halberd,this.grupo8);
+        this.physics.add.collider(this.soldado,this.grupo8);
+        this.physics.add.collider(this.coaxoch,this.grupo9);
+        this.physics.add.collider(this.halberd,this.grupo9);
+        this.physics.add.collider(this.soldado,this.grupo9);
+        this.physics.add.collider(this.coaxoch,this.grupo10);
+        this.physics.add.collider(this.halberd,this.grupo10);
+        this.physics.add.collider(this.soldado,this.grupo10);
+                   
         // Fin Seccion Fisicas
 
 
