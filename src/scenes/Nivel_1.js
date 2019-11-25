@@ -82,6 +82,7 @@ class Nivel_1 extends Phaser.Scene{
                 
                 this.grupo4.children.iterate((tierra)=>{
                     tierra.setDepth(1);
+                    tierra.setScale(.8);
     
             }   );
         
@@ -231,7 +232,16 @@ class Nivel_1 extends Phaser.Scene{
             contf++;
             
         });
-         
+        this.physics.add.collider(this.grupo4, this.flechas, (coaxoch, soldado)=>{
+            this.flechas.getChildren()[contf].body.enable = false;
+            if(contf==10)
+            {
+                this.flechas.getChildren()[contf-10].destroy();
+                contf--;
+            }
+            contf++;
+            
+        });
        
 
         this.physics.add.collider(this.coaxoch,this.flechas,(coaxoch,flechas) => {
@@ -244,7 +254,7 @@ class Nivel_1 extends Phaser.Scene{
         this.physics.add.collider(this.halberd,this.grupo);
         this.physics.add.collider(this.soldado,this.grupo);
 
-       this.physics.add.collider(this.coaxoch,this.grupo4);
+         this.physics.add.collider(this.coaxoch,this.grupo4);
         this.physics.add.collider(this.halberd,this.grupo4);
         this.physics.add.collider(this.soldado,this.grupo4);
         this.physics.add.collider(this.coaxoch,this.grupo5);
