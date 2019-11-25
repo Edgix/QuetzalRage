@@ -24,17 +24,17 @@ class Nivel_2 extends Phaser.Scene{
         this.scene.launch('SceneVida');
         this.halberd = this.physics.add.image(350,200,'halberd');
         this.halberd.setDepth(3);
-        this.halberd.setScale(1.5);
+        this.halberd.setScale(1.2);
         const keyCodes= Phaser.Input.Keyboard.KeyCodes;
         this.cursor= this.input.keyboard.createCursorKeys();
         this.soldado = this.physics.add.sprite(600,200, 'soldado');
         this.soldado.setDepth(1);
-        this.soldado.setScale(2);
+        this.soldado.setScale(1.5);
         this.soldado.anims.play('soldadostatic_walk');
         this.soldado.body.setSize(this.soldado.width,this.soldado.height,true);
         this.coaxoch = this.physics.add.sprite(350,200, 'coaxoch');
         this.coaxoch.setDepth(1);
-        this.coaxoch.setScale(2);
+        this.coaxoch.setScale(1.5);
         this.soldado.body.setSize(34,38);
         this.soldado.body.setOffset(17,15);    
         this.coaxoch.anims.play('coaxoch_static_walk');
@@ -82,7 +82,7 @@ class Nivel_2 extends Phaser.Scene{
                 
                 this.grupo4.children.iterate((tierra)=>{
                     tierra.setDepth(1);
-                    tierra.setScale(.8);
+                    tierra.setScale(.7);
     
             }   );
         
@@ -98,6 +98,7 @@ class Nivel_2 extends Phaser.Scene{
         });
         this.tierraPiso2.children.iterate((tierra)=>{
             tierra.setDepth(1);
+            tierra.setScale(.7);
 
         }   );
         this.tierraPiso3=this.physics.add.staticGroup({
@@ -111,7 +112,7 @@ class Nivel_2 extends Phaser.Scene{
         });
         this.tierraPiso3.children.iterate((tierra)=>{
             tierra.setDepth(1);
-
+            tierra.setScale(.7);
         }   );
 
         this.tierraPiso4=this.physics.add.staticGroup({
@@ -120,12 +121,13 @@ class Nivel_2 extends Phaser.Scene{
             setXY:{
                 x:950,
                 y:400,
-                stepX:64
+                stepX:44.8
             }
         });
         this.tierraPiso4.children.iterate((tierra)=>{
             tierra.setDepth(1);
-
+            tierra.setScale(.7);
+            tierra.body.setSize(44.4,44.4);
         }   );
         this.tierraPiso5=this.physics.add.staticGroup({
             key:'tierra',
