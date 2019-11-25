@@ -109,7 +109,9 @@ class Nivel_2 extends Phaser.Scene{
                 x:1400,
                 y:500,
                 stepX:44.8
+                
             }
+            
         });
         this.tierraPiso3.children.iterate((tierra)=>{
             tierra.setDepth(1);
@@ -117,7 +119,6 @@ class Nivel_2 extends Phaser.Scene{
             tierra.body.setSize(44,44);
             tierra.body.setOffset(10,10);
         }   );
-
         this.tierraPiso4=this.physics.add.staticGroup({
             key:'tierra',
             repeat:3,
@@ -133,6 +134,15 @@ class Nivel_2 extends Phaser.Scene{
             tierra.body.setSize(44,44);
             tierra.body.setOffset(10,10);
         }   );
+        
+        this.add.tween({
+            targets: this.tierraPiso4.getChildren(),
+            x:1700,
+            yoyo: true,
+            duration: 500,
+            repeat: -1,
+            easy:'power1'
+        });
         this.tierraPiso5=this.physics.add.staticGroup({
             key:'tierra',
             repeat:0,
