@@ -68,7 +68,7 @@ class Nivel_1 extends Phaser.Scene{
          this.grupo2.children.iterate((tierra_b)=>{
              tierra_b.setDepth(1);
 
-        }   );
+        }    );
 
         this.grupo4=this.physics.add.staticGroup({
             key:'tierra',
@@ -98,6 +98,7 @@ class Nivel_1 extends Phaser.Scene{
             
             this.grupo5.children.iterate((tierra)=>{
                 tierra.setDepth(1);
+                tierra.setScale(.8);
 
         }   );
 
@@ -112,6 +113,7 @@ class Nivel_1 extends Phaser.Scene{
         });
         this.grupo6.children.iterate((tierra)=>{
             tierra.setDepth(1);
+            tierra.setScale(.8);
 
         }   );
 
@@ -127,6 +129,7 @@ class Nivel_1 extends Phaser.Scene{
         });
         this.grupo7.children.iterate((tierra)=>{
             tierra.setDepth(1);
+            tierra.setScale(.8);
 
         }   );
 
@@ -142,6 +145,7 @@ class Nivel_1 extends Phaser.Scene{
         });
         this.grupo8.children.iterate((tierra)=>{
             tierra.setDepth(1);
+            tierra.setScale(.8);
 
         }   );
 
@@ -156,6 +160,7 @@ class Nivel_1 extends Phaser.Scene{
         });
         this.grupo9.children.iterate((tierra)=>{
             tierra.setDepth(1);
+            tierra.setScale(.8);
 
         }   );
 
