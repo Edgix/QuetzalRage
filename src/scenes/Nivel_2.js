@@ -134,12 +134,14 @@ class Nivel_2 extends Phaser.Scene{
             tierra.setScale(.7);
             tierra.body.setSize(44,44);
             tierra.body.setOffset(10,10);
+            tierra.body.allowGravity = false;
         }   );
+
         this.add.tween({
             targets: this.tierraPiso4.getChildren(),
-            x:1650,
+            x:1800,
             yoyo: true,
-            duration: 500,
+            duration: 2000,
             repeat: -1,
             easy:'power1'
         });
