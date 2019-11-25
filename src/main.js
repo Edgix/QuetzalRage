@@ -15,7 +15,7 @@ const config = {
                                     // se refiere a dónde se pondrá el canvas o lienzo
     pixelArt: true,		            //Diseño con pixeles definidos (no borrosos)
     backgroundColor: "#34495e", 	//Color de fondo del canvas ()
-    scene: [Nivel_1,Nivel_2,SceneVida],    //Aquí irá la lista de scenas del juego
+    scene: [Nivel_2, Nivel_1,SceneVida],    //Aquí irá la lista de scenas del juego
     banner:{
         hidePhaser: true,
         text: "#fff00f",
