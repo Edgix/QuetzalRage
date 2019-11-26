@@ -7,6 +7,7 @@ class SceneVida extends Phaser.Scene{
     init() {
     console.log('Escena vida');
     }
+    
     create() {
         this.score= this.add.image (100,70, 'score');
         this.score.setScale(2);
@@ -33,12 +34,18 @@ class SceneVida extends Phaser.Scene{
                 });
                 var contador = 2;
                 this.registry.events.on('evento',(dato)=>{
-                   if(dato == 1)
+                   if(dato.num == 1)
                    {
                     this.grupo3.getChildren()[contador].setVisible(false);
                     contador--;
                    }
+                   if(contador == -1)
+                   {
+                       dato.cancion.stop();
+                       console.log(dato);
+                   }
                 });
+                
 
     }
     update(time, delta) {

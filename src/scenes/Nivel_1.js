@@ -18,6 +18,8 @@ class Nivel_1 extends Phaser.Scene{
         this.load.atlas('soldado', 'soldado_atlas/soldado.png', 'soldado_atlas/soldado_atlas.json');
         this.load.animation('SoldadoAnim', 'soldado_atlas/soldado_anim.json');
         this.load.animation('CoaxochAnim', 'coaxoch_atlas/coaxoch_anim.json');
+        this.load.path = "./assets/musica/";
+        this.load.audio('musica', 'Nivel_uno.mp3');
         
     }
     create() {
@@ -41,6 +43,8 @@ class Nivel_1 extends Phaser.Scene{
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
         this.coaxoch.body.setSize(37.5,49);
         this.coaxoch.body.setOffset(4,2);
+        let audio = this.sound.add('musica',{loop:true});
+        audio.play();
     
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
@@ -200,7 +204,7 @@ class Nivel_1 extends Phaser.Scene{
                 coaxoch.setVelocityX(1000000);
                 soldado.setVelocityX(-1000);
             }
-            this.registry.events.emit('evento',1);
+            this.registry.events.emit('evento', {num:1, cancion:audio});
             this.enemi1.active =false;               
              setTimeout(() => {
                 coaxoch.setTint();
@@ -246,23 +250,14 @@ class Nivel_1 extends Phaser.Scene{
             contf++;
             
         });
-        this.physics.add.collider(this.grupo4, this.flechas, (coaxoch, soldado)=>{
-            this.flechas.getChildren()[contf].body.enable = false;
-            if(contf==10)
-            {
-                this.flechas.getChildren()[contf-10].destroy();
-                contf--;
-            }
-            contf++;
-            
-        });
+        
        
 
         this.physics.add.collider(this.coaxoch,this.flechas,(coaxoch,flechas) => {
             this.flechas.getChildren()[contf].body.enable = false;
             this.coaxoch.setVelocityY(-90);
             this.flechas.getChildren()[contf].destroy();
-
+            
         });
         this.physics.add.collider(this.coaxoch,this.grupo);
         this.physics.add.collider(this.halberd,this.grupo);

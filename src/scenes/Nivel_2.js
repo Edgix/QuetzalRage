@@ -21,6 +21,9 @@ class Nivel_2 extends Phaser.Scene{
         this.load.atlas('soldado', 'soldado_atlas/soldado.png', 'soldado_atlas/soldado_atlas.json');
         this.load.animation('SoldadoAnim', 'soldado_atlas/soldado_anim.json');
         this.load.animation('CoaxochAnim', 'coaxoch_atlas/coaxoch_anim.json');
+        this.load.path = "./assets/musica/";
+        this.load.audio('musica', 'Nivel_dos.mp3');
+       
         
     }
     
@@ -48,6 +51,9 @@ class Nivel_2 extends Phaser.Scene{
         this.coaxoch.body.setSize(37.5,49);
         this.coaxoch.body.setOffset(4,2);
         this.coaxoch.setCollideWorldBounds(true);
+        let audio = this.sound.add('musica',{loop:true});
+        audio.play();
+
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
             repeat:46,
@@ -237,7 +243,7 @@ class Nivel_2 extends Phaser.Scene{
                 coaxoch.setVelocityX(1000000);
                 soldado.setVelocityX(-1000);
             }
-            this.registry.events.emit('evento',1);
+            this.registry.events.emit('evento',{num:1, cancion:audio});
             this.enemi1.active =false;               
              setTimeout(() => {
                 coaxoch.setTint();
