@@ -320,6 +320,8 @@ class Nivel_1 extends Phaser.Scene{
     {
         this.coaxoch.setVelocityY(-350);
     }
+
+   
     }
 }
 

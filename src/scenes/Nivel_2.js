@@ -5,8 +5,10 @@ class Nivel_2 extends Phaser.Scene{
         });
     }
 
+    
     init() {
         console.log("Escena Nivel 2");
+       
     }
     preload() {
         this.load.path = "./assets/Objetos/";               //Ruta de Objetos(Inicia aqui cosas de la carpeta Objetos)
@@ -135,16 +137,13 @@ class Nivel_2 extends Phaser.Scene{
             tierra.body.setSize(44,44);
             tierra.body.setOffset(10,10);
             tierra.body.allowGravity = false;
+            tierra.setImmovable(false);
+           // tierra.body.allowGravity = false;
+            tierra.setVelocityX(150);
         }   );
 
-        this.add.tween({
-            targets: this.tierraPiso4.getChildren(),
-            x:1800,
-            yoyo: true,
-            duration: 2000,
-            repeat: -1,
-            easy:'power1'
-        });
+
+       
         
         this.tierraPiso5=this.physics.add.staticGroup({
             key:'tierra',
@@ -341,6 +340,8 @@ class Nivel_2 extends Phaser.Scene{
     }
     update(time, delta) {
 
+        
+
         if (this.cursor.left.isDown)
     {
         this.coaxoch.setVelocityX(-160);
@@ -369,7 +370,17 @@ class Nivel_2 extends Phaser.Scene{
     {
         this.coaxoch.setVelocityY(-350);
     }
+
+    if (this.tierraPiso4.x >= 1050)
+    {
+        this.tierraPiso4.setVelocityX(-150);
     }
+    else if (this.tierraPiso4.x <= 50)
+    {
+        this.tierraPiso4.setVelocityX(850);
+    }
+    }
+
 }
 
 export default Nivel_2;
