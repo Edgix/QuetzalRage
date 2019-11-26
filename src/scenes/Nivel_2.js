@@ -2,10 +2,11 @@ class Nivel_2 extends Phaser.Scene{
     constructor(){
         super({
             key: "Nivel_2" //Nombre interno o clave de referencia
+            
         });
     }
 
-    
+  
     init() {
         console.log("Escena Nivel 2");
        
@@ -22,14 +23,17 @@ class Nivel_2 extends Phaser.Scene{
         this.load.animation('CoaxochAnim', 'coaxoch_atlas/coaxoch_anim.json');
         
     }
+    
     create() {
+        this.velo;
+
         this.scene.launch('SceneVida');
         this.halberd = this.physics.add.image(350,200,'halberd');
         this.halberd.setDepth(3);
         this.halberd.setScale(1.2);
         const keyCodes= Phaser.Input.Keyboard.KeyCodes;
         this.cursor= this.input.keyboard.createCursorKeys();
-        this.soldado = this.physics.add.sprite(600,200, 'soldado');
+        this.soldado = this.physics.add.sprite(1100,200, 'soldado');
         this.soldado.setDepth(1);
         this.soldado.setScale(1.5);
         this.soldado.anims.play('soldadostatic_walk');
@@ -43,7 +47,7 @@ class Nivel_2 extends Phaser.Scene{
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
         this.coaxoch.body.setSize(37.5,49);
         this.coaxoch.body.setOffset(4,2);
-    
+        this.coaxoch.setCollideWorldBounds(true);
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
             repeat:46,
@@ -134,12 +138,11 @@ class Nivel_2 extends Phaser.Scene{
         this.tierraPiso4.children.iterate((tierra)=>{
             tierra.setDepth(1);
             tierra.setScale(.7);
-            tierra.body.setSize(44,44);
-            tierra.body.setOffset(10,10);
+            tierra.body.setSize(64,64);
+            tierra.body.setOffset(1,1);
             tierra.body.allowGravity = false;
-            tierra.setImmovable(false);
-           // tierra.body.allowGravity = false;
-            tierra.setVelocityX(150);
+            tierra.setImmovable(true);
+            tierra.setVelocityX(50);
         }   );
 
 
@@ -292,12 +295,18 @@ class Nivel_2 extends Phaser.Scene{
         });
        
 
-        this.physics.add.collider(this.coaxoch,this.flechas,(coaxoch,flechas) => {
-            this.flechas.getChildren()[contf].body.enable = false;
-            this.coaxoch.setVelocityY(-90);
-            this.flechas.getChildren()[contf].destroy();
+        this.physics.add.collider(this.coaxoch,this.tierraPiso4,(coaxoch,tierraPiso4) => {
+
+            if(coaxoch.body.touching.down)
+            {
+                coaxoch.setVelocityX(this.velo);
+            }
 
         });
+
+
+        
+
         this.physics.add.collider(this.coaxoch,this.grupo);
         this.physics.add.collider(this.halberd,this.grupo);
         this.physics.add.collider(this.soldado,this.grupo);
@@ -322,12 +331,14 @@ class Nivel_2 extends Phaser.Scene{
         this.physics.add.collider(this.soldado,this.grupo9);
         this.physics.add.collider(this.coaxoch,this.tierraPiso2);
         this.physics.add.collider(this.coaxoch,this.tierraPiso3);
+
         this.physics.add.collider(this.coaxoch,this.tierraPiso4);
+
         this.physics.add.collider(this.coaxoch,this.tierraPiso5);
         this.physics.add.collider(this.coaxoch,this.tierraPiso6);
         this.physics.add.collider(this.coaxoch,this.tierraPiso7);
         this.physics.add.collider(this.coaxoch,this.tierraPiso8);
-
+        this.physics.add.collider(this.soldado,this.tierraPiso4);
 
 
 
@@ -342,7 +353,7 @@ class Nivel_2 extends Phaser.Scene{
 
         
 
-        if (this.cursor.left.isDown)
+    if (this.cursor.left.isDown)
     {
         this.coaxoch.setVelocityX(-160);
         this.coaxoch.flipX=true;
@@ -350,20 +361,19 @@ class Nivel_2 extends Phaser.Scene{
         this.coaxoch.body.setOffset(10,2);
 
     }
-
     else if (this.cursor.right.isDown)
     {
-        this.coaxoch.setVelocityX(160);
+        this.coaxoch.setVelocityX(260);
         this.coaxoch.flipX=false;
         this.coaxoch.anims.play('coaxorun_walk',true);
         this.coaxoch.body.setOffset(4,2);
 
     }
-    else if (this.coaxoch.body.touching.down)
+    else 
     {
         
-        this.coaxoch.setVelocityX(0);
-        this.coaxoch.anims.play('coaxoch_static_walk',true)
+     //this.coaxoch.setVelocityX(0);
+        this.coaxoch.anims.play('coaxoch_static_walk',true);
     }
 
     if (this.cursor.up.isDown && this.coaxoch.body.touching.down)
@@ -374,10 +384,12 @@ class Nivel_2 extends Phaser.Scene{
     if (this.tierraPiso4.getChildren()[2].x >= 1200)
     {
         this.tierraPiso4.setVelocityX(-150);
+        this.velo=-150;
     }
     else if (this.tierraPiso4.getChildren()[0].x <= 900)
     {
         this.tierraPiso4.setVelocityX(150);
+        this.velo=150;
     }
     }
 

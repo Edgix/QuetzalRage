@@ -85,6 +85,8 @@ class Nivel_1 extends Phaser.Scene{
                     tierra.setScale(.7);
                     tierra.body.setSize(44,44);
                     tierra.body.setOffset(10,10);
+                    tierra.setImmovable(true);
+                    tierra.body.allowGravity = false;
     
             }   );
         
