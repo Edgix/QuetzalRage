@@ -371,13 +371,13 @@ class Nivel_2 extends Phaser.Scene{
         this.coaxoch.setVelocityY(-350);
     }
 
-    if (this.tierraPiso4.getChildren()[2].x >= 1000)
+    if (this.tierraPiso4.getChildren()[2].x >= 1200)
     {
         this.tierraPiso4.setVelocityX(-150);
     }
-    else if (this.tierraPiso4.getChildren()[0].x <= 500)
+    else if (this.tierraPiso4.getChildren()[0].x <= 900)
     {
-        this.tierraPiso4.setVelocityX(850);
+        this.tierraPiso4.setVelocityX(150);
     }
     }
 
