@@ -51,7 +51,7 @@ class Nivel_2 extends Phaser.Scene{
         this.coaxoch.body.setOffset(4,2);
         //this.coaxoch.setCollideWorldBounds(true);
         let audio = this.sound.add('musica',{loop:true});
-        this.Fondo = this.add.image(850, 320, "Nivel_2"); 
+        this.Fondo = this.add.image(2700, 320, "Nivel_2"); 
         this.Fondo.setDepth(0);
         this.Fondo.setScale(1.2);
         this.cameras.main.setBounds(0,0,4500,760);
