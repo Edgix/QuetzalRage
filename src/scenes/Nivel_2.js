@@ -272,7 +272,7 @@ class Nivel_2 extends Phaser.Scene{
                         this.flecha.angle = 50;
                         this.flecha.body.setSize(7,7).setOffset(23,45);
                         this.flecha.body.rotation=20;
-                       
+                        this.flecha.setVelocityX(-100)
                 break;
             }
         },
@@ -285,19 +285,29 @@ class Nivel_2 extends Phaser.Scene{
             {
                 this.flechas.getChildren()[contf-10].destroy();
                 contf--;
+                
             }
             contf++;
             
         });
-        this.physics.add.collider(this.grupo4, this.flechas, (coaxoch, soldado)=>{
+        this.physics.add.collider(this.coaxoch,this.flechas,(coaxoch,flechas) => {
             this.flechas.getChildren()[contf].body.enable = false;
-            if(contf==10)
-            {
-                this.flechas.getChildren()[contf-10].destroy();
-                contf--;
-            }
-            contf++;
             
+            if(!coaxoch.body.touching.down)
+            {
+                this.coaxoch.setVelocityY(90);
+            }
+            else{
+                this.coaxoch.setVelocityY(-90);
+            }
+            this.flechas.getChildren()[contf].destroy();
+            coaxoch.setTint(0xff0000);
+            this.enemi1.active =false;               
+             setTimeout(() => {
+                coaxoch.setTint();
+            }, 150);
+            
+
         });
        
 
@@ -361,7 +371,7 @@ class Nivel_2 extends Phaser.Scene{
 
     if (this.cursor.left.isDown)
     {
-        this.coaxoch.setVelocityX(-160);
+        this.coaxoch.setVelocityX(-200);
         this.coaxoch.flipX=true;
         this.coaxoch.anims.play('coaxorun_walk',true);
         this.coaxoch.body.setOffset(10,2);
@@ -369,16 +379,16 @@ class Nivel_2 extends Phaser.Scene{
     }
     else if (this.cursor.right.isDown)
     {
-        this.coaxoch.setVelocityX(260);
+        this.coaxoch.setVelocityX(200);
         this.coaxoch.flipX=false;
         this.coaxoch.anims.play('coaxorun_walk',true);
         this.coaxoch.body.setOffset(4,2);
 
     }
-    else 
+    else if(this.cursor.right.isUp || this.cursor.left.isUp )
     {
         
-     //this.coaxoch.setVelocityX(0);
+     this.coaxoch.setVelocityX(0);
         this.coaxoch.anims.play('coaxoch_static_walk',true);
     }
 
