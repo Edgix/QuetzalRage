@@ -29,7 +29,6 @@ class Nivel_2 extends Phaser.Scene{
     
     create() {
         this.velo;
-
         this.scene.launch('SceneVida');
         this.halberd = this.physics.add.image(350,200,'halberd');
         this.halberd.setDepth(3);
@@ -50,13 +49,18 @@ class Nivel_2 extends Phaser.Scene{
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
         this.coaxoch.body.setSize(37.5,49);
         this.coaxoch.body.setOffset(4,2);
-        this.coaxoch.setCollideWorldBounds(true);
+        //this.coaxoch.setCollideWorldBounds(true);
         let audio = this.sound.add('musica',{loop:true});
+        this.Fondo = this.add.image(850, 320, "Nivel_2"); 
+        this.Fondo.setDepth(0);
+        this.Fondo.setScale(1.2);
+        this.cameras.main.setBounds(0,0,4500,760);
+        this.cameras.main.startFollow(this.coaxoch);
         audio.play();
 
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
-            repeat:46,
+            repeat:90,
             setXY:{
                 x:31,
                 y:684,
@@ -218,10 +222,6 @@ class Nivel_2 extends Phaser.Scene{
             tierra.body.setOffset(10,10);
 
         }   );
-        this.Fondo = this.add.image(850, 320, "Nivel_2"); 
-        this.Fondo.setDepth(0);
-        this.Fondo.setScale(1.2);
-
    
 
         // Sección donde se Agregaran Fisicas
@@ -263,7 +263,7 @@ class Nivel_2 extends Phaser.Scene{
         delay: 100,
         callback: () =>{
             var random = Phaser.Math.Between(0,4);
-            var x = Phaser.Math.Between(0,1500);
+            var x = Phaser.Math.Between(this.coaxoch.x-750,this.coaxoch.x+750);
             switch(random)
             {
                 case 0:
@@ -301,8 +301,7 @@ class Nivel_2 extends Phaser.Scene{
                 this.coaxoch.setVelocityY(-90);
             }
             this.flechas.getChildren()[contf].destroy();
-            coaxoch.setTint(0xff0000);
-            this.enemi1.active =false;               
+            coaxoch.setTint(0xff0000);              
              setTimeout(() => {
                 coaxoch.setTint();
             }, 150);
@@ -367,7 +366,6 @@ class Nivel_2 extends Phaser.Scene{
     }
     update(time, delta) {
 
-        
 
     if (this.cursor.left.isDown)
     {
