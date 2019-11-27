@@ -341,7 +341,7 @@ class Nivel_2 extends Phaser.Scene{
 
         this.lluvia = this.time.addEvent({
 
-        delay: 100,
+        delay: 150,
         callback: () =>{
             var random = Phaser.Math.Between(0,4);
             var x = Phaser.Math.Between(this.coaxoch.x-750,this.coaxoch.x+750);
@@ -360,17 +360,6 @@ class Nivel_2 extends Phaser.Scene{
         repeat:-1
     })
        
-        this.physics.add.collider(this.grupo, this.flechas, (grupo, flechas)=>{
-            this.flechas.getChildren()[contf].body.enable = false;
-            if(contf==10)
-            {
-                this.flechas.getChildren()[contf-10].destroy();
-                contf--;
-                
-            }
-            contf++;
-            
-        });
         this.physics.add.collider(this.coaxoch,this.flechas,(coaxoch,flechas) => {
             this.flechas.getChildren()[contf].body.enable = false;
             
@@ -390,17 +379,29 @@ class Nivel_2 extends Phaser.Scene{
 
         });
        
-
+        this.physics.add.collider(this.grupo, this.flechas, (grupo, flechas)=>{
+            this.flechas.getChildren()[contf].body.enable = false;
+            if(contf==10)
+            {
+                this.flechas.getChildren()[contf-10 ].destroy();
+                contf--;
+                
+            }
+            contf++;
+            
+        });
         this.physics.add.collider(this.coaxoch,this.tierraPiso4,(coaxoch,tierraPiso4) => {
 
             if(this.coaxoch.body.touching.down)
             {
                 coaxoch.setVelocityX(this.velo);
+                this.coaxoch.anims.play('coaxoch_static_walk',true);
             }
 
         });        
         this.physics.add.collider(this.coaxoch,this.grupo,(coaxoch,grupo) => {
             coaxoch.setVelocityX(0);
+            this.coaxoch.anims.play('coaxoch_static_walk',true);
         });
         this.physics.add.collider(this.halberd,this.grupo);
         this.physics.add.collider(this.soldado,this.grupo);
