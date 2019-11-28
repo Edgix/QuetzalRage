@@ -171,7 +171,75 @@ class Nivel_2 extends Phaser.Scene{
                 y:280,
                 stepX:44.8
         }});
+        //piso12
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:3,
+            setXY:{
+                x:2450,
+                y:200,
+                stepX:44.8
+        }});
+        //piso13
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:2,
+            setXY:{
+                x:2750,
+                y:300,
+                stepX:44.8
+        }});
+        //piso14
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:1,
+            setXY:{
+                x:3050,
+                y:420,
+                stepX:44.8
+        }});
 
+        //piso15
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:2,
+            setXY:{
+                x:3400,
+                y:480,
+                stepX:44.8
+        }});
+        
+
+        //piso16
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:2,
+            setXY:{
+                x:3680,
+                y:400,
+                stepX:44.8
+        }});
+
+        //piso17
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:3,
+            setXY:{
+                x:3950,
+                y:320,
+                stepX:44.8
+        }});
+
+        //piso18
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:1,
+            setXY:{
+                x:4250,
+                y:450,
+                stepX:44.8
+        }});
+        
         this.grupo.getChildren()[91].setScale(.7);
         this.grupo.getChildren()[92].setScale(.7);
         this.grupo.getChildren()[91].body.setSize(44,44);
@@ -253,6 +321,84 @@ class Nivel_2 extends Phaser.Scene{
         this.grupo.getChildren()[113].setScale(.7);
         this.grupo.getChildren()[113].body.setSize(44,44);
         this.grupo.getChildren()[113].body.setOffset(10,10);
+//piso12
+        this.grupo.getChildren()[114].setScale(.7);
+        this.grupo.getChildren()[114].body.setSize(44,44);
+        this.grupo.getChildren()[114].body.setOffset(10,10);
+        this.grupo.getChildren()[115].setScale(.7);
+        this.grupo.getChildren()[115].body.setSize(44,44);
+        this.grupo.getChildren()[115].body.setOffset(10,10);
+        this.grupo.getChildren()[116].setScale(.7);
+        this.grupo.getChildren()[116].body.setSize(44,44);
+        this.grupo.getChildren()[116].body.setOffset(10,10);
+        this.grupo.getChildren()[117].setScale(.7);
+        this.grupo.getChildren()[117].body.setSize(44,44);
+        this.grupo.getChildren()[117].body.setOffset(10,10);
+//piso13
+        this.grupo.getChildren()[118].setScale(.7);
+        this.grupo.getChildren()[118].body.setSize(44,44);
+        this.grupo.getChildren()[118].body.setOffset(10,10);
+        this.grupo.getChildren()[119].setScale(.7);
+        this.grupo.getChildren()[119].body.setSize(44,44);
+        this.grupo.getChildren()[119].body.setOffset(10,10);
+        this.grupo.getChildren()[120].setScale(.7);
+        this.grupo.getChildren()[120].body.setSize(44,44);
+        this.grupo.getChildren()[120].body.setOffset(10,10);
+
+//piso14
+        
+        this.grupo.getChildren()[121].setScale(.7);
+        this.grupo.getChildren()[121].body.setSize(44,44);
+        this.grupo.getChildren()[121].body.setOffset(10,10);
+        this.grupo.getChildren()[122].setScale(.7);
+        this.grupo.getChildren()[122].body.setSize(44,44);
+        this.grupo.getChildren()[122].body.setOffset(10,10);
+
+        //piso15
+        this.grupo.getChildren()[123].setScale(.7);
+        this.grupo.getChildren()[123].body.setSize(44,44);
+        this.grupo.getChildren()[123].body.setOffset(10,10);
+        this.grupo.getChildren()[124].setScale(.7);
+        this.grupo.getChildren()[124].body.setSize(44,44);
+        this.grupo.getChildren()[124].body.setOffset(10,10);
+        this.grupo.getChildren()[125].setScale(.7);
+        this.grupo.getChildren()[125].body.setSize(44,44);
+        this.grupo.getChildren()[125].body.setOffset(10,10);
+
+
+        //piso16
+        this.grupo.getChildren()[126].setScale(.7);
+        this.grupo.getChildren()[126].body.setSize(44,44);
+        this.grupo.getChildren()[126].body.setOffset(10,10);
+        this.grupo.getChildren()[127].setScale(.7);
+        this.grupo.getChildren()[127].body.setSize(44,44);
+        this.grupo.getChildren()[127].body.setOffset(10,10);
+        this.grupo.getChildren()[128].setScale(.7);
+        this.grupo.getChildren()[128].body.setSize(44,44);
+        this.grupo.getChildren()[128].body.setOffset(10,10);
+
+
+         //piso17
+         this.grupo.getChildren()[129].setScale(.7);
+         this.grupo.getChildren()[129].body.setSize(44,44);
+         this.grupo.getChildren()[129].body.setOffset(10,10);
+         this.grupo.getChildren()[130].setScale(.7);
+         this.grupo.getChildren()[130].body.setSize(44,44);
+         this.grupo.getChildren()[130].body.setOffset(10,10);
+         this.grupo.getChildren()[131].setScale(.7);
+         this.grupo.getChildren()[131].body.setSize(44,44);
+         this.grupo.getChildren()[131].body.setOffset(10,10);
+         this.grupo.getChildren()[132].setScale(.7);
+         this.grupo.getChildren()[132].body.setSize(44,44);
+         this.grupo.getChildren()[132].body.setOffset(10,10);
+
+          //piso18
+        this.grupo.getChildren()[133].setScale(.7);
+        this.grupo.getChildren()[133].body.setSize(44,44);
+        this.grupo.getChildren()[133].body.setOffset(10,10);
+        this.grupo.getChildren()[134].setScale(.7);
+        this.grupo.getChildren()[134].body.setSize(44,44);
+        this.grupo.getChildren()[134].body.setOffset(10,10);
 
         //this.grupo.add(this.tierra1);
 
