@@ -57,6 +57,8 @@ class Nivel_2 extends Phaser.Scene{
         this.cameras.main.startFollow(this.coaxoch);
         audio.play();
 
+       // this.tierra1 = this.add.image(1290,600, "tierra");
+        
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
             repeat:90,
@@ -70,6 +72,189 @@ class Nivel_2 extends Phaser.Scene{
              tierra.setDepth(1);
 
         }   );
+        //piso1
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:1,
+            setXY:{
+                x:1290,
+                y:610,
+                stepX:44.8
+        }});
+        //piso2
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:1,
+            setXY:{
+                x:1400,
+                y:500,
+                stepX:44.8
+        }});
+        //piso3
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:0,
+            setXY:{
+                x:650,
+                y:400,
+                stepX:44.8
+        }});
+        //piso4
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:0,
+            setXY:{
+                x:650,
+                y:400,
+                stepX:44.8
+        }});
+        //piso5
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:1,
+            setXY:{
+                x:450,
+                y:400,
+                stepX:44.8
+        }});
+        //grupo6
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:2,
+            setXY:{
+                x:100,
+                y:300,
+                stepX:44.8
+        }});
+        //piso7
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:2,
+            setXY:{
+                x:450,
+                y:200,
+                stepX:44.8
+        }});
+        //piso8
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:1,
+            setXY:{
+                x:1550,
+                y:610,
+                stepX:44.8
+        }});
+        //piso9
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:3,
+            setXY:{
+                x:1700,
+                y:400,
+                stepX:44.8
+        }});
+        //piso10
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:0,
+            setXY:{
+                x:1950,
+                y:300,
+                stepX:44.8
+        }});
+        //piso11
+        this.grupo.createMultiple({
+            key:'tierra',
+            repeat:1,
+            setXY:{
+                x:2100,
+                y:280,
+                stepX:44.8
+        }});
+
+        this.grupo.getChildren()[91].setScale(.7);
+        this.grupo.getChildren()[92].setScale(.7);
+        this.grupo.getChildren()[91].body.setSize(44,44);
+        this.grupo.getChildren()[91].body.setOffset(10,10);
+        this.grupo.getChildren()[92].body.setSize(44,44);
+        this.grupo.getChildren()[92].body.setOffset(10,10);
+        //piso2
+        this.grupo.getChildren()[93].setScale(.7);
+        this.grupo.getChildren()[94].setScale(.7);
+        this.grupo.getChildren()[93].body.setSize(44,44);
+        this.grupo.getChildren()[93].body.setOffset(10,10);
+        this.grupo.getChildren()[94].body.setSize(44,44);
+        this.grupo.getChildren()[94].body.setOffset(10,10);
+//piso4
+        this.grupo.getChildren()[95].setScale(.7);
+        this.grupo.getChildren()[95].body.setSize(44,44);
+        this.grupo.getChildren()[95].body.setOffset(10,10);
+
+//piso5
+        this.grupo.getChildren()[96].setScale(.7);
+        this.grupo.getChildren()[97].setScale(.7);
+        this.grupo.getChildren()[98].setScale(.7);
+        this.grupo.getChildren()[96].body.setSize(44,44);
+        this.grupo.getChildren()[96].body.setOffset(10,10);
+        this.grupo.getChildren()[97].body.setSize(44,44);
+        this.grupo.getChildren()[97].body.setOffset(10,10);
+        this.grupo.getChildren()[98].body.setSize(44,44);
+        this.grupo.getChildren()[98].body.setOffset(10,10);
+ 
+
+//piso6
+        this.grupo.getChildren()[99].setScale(.7);
+        this.grupo.getChildren()[100].setScale(.7);
+        this.grupo.getChildren()[101].setScale(.7);
+        this.grupo.getChildren()[99].body.setSize(44,44);
+        this.grupo.getChildren()[99].body.setOffset(10,10);
+        this.grupo.getChildren()[100].body.setSize(44,44);
+        this.grupo.getChildren()[100].body.setOffset(10,10);
+        this.grupo.getChildren()[101].body.setSize(44,44);
+        this.grupo.getChildren()[101].body.setOffset(10,10);
+//piso7
+        this.grupo.getChildren()[102].setScale(.7);
+        this.grupo.getChildren()[103].setScale(.7);
+        this.grupo.getChildren()[104].setScale(.7);
+        this.grupo.getChildren()[102].body.setSize(44,44);
+        this.grupo.getChildren()[102].body.setOffset(10,10);
+        this.grupo.getChildren()[103].body.setSize(44,44);
+        this.grupo.getChildren()[103].body.setOffset(10,10);
+        this.grupo.getChildren()[104].body.setSize(44,44);
+        this.grupo.getChildren()[104].body.setOffset(10,10);
+//piso8
+        this.grupo.getChildren()[105].setScale(.7);
+        this.grupo.getChildren()[106].setScale(.7);
+        this.grupo.getChildren()[105].body.setSize(44,44);
+        this.grupo.getChildren()[105].body.setOffset(10,10);
+        this.grupo.getChildren()[106].body.setSize(44,44);
+        this.grupo.getChildren()[106].body.setOffset(10,10);
+//piso9
+        this.grupo.getChildren()[107].setScale(.7);
+        this.grupo.getChildren()[108].setScale(.7);
+        this.grupo.getChildren()[109].setScale(.7);
+        this.grupo.getChildren()[110].setScale(.7);
+        this.grupo.getChildren()[107].body.setSize(44,44);
+        this.grupo.getChildren()[107].body.setOffset(10,10);
+        this.grupo.getChildren()[108].body.setSize(44,44);
+        this.grupo.getChildren()[108].body.setOffset(10,10);
+        this.grupo.getChildren()[109].body.setSize(44,44);
+        this.grupo.getChildren()[109].body.setOffset(10,10);
+        this.grupo.getChildren()[110].body.setSize(44,44);
+        this.grupo.getChildren()[110].body.setOffset(10,10);
+//piso10
+        this.grupo.getChildren()[111].setScale(.7);
+        this.grupo.getChildren()[111].body.setSize(44,44);
+        this.grupo.getChildren()[111].body.setOffset(10,10);
+//piso11
+        this.grupo.getChildren()[112].setScale(.7);
+        this.grupo.getChildren()[112].body.setSize(44,44);
+        this.grupo.getChildren()[112].body.setOffset(10,10);
+        this.grupo.getChildren()[113].setScale(.7);
+        this.grupo.getChildren()[113].body.setSize(44,44);
+        this.grupo.getChildren()[113].body.setOffset(10,10);
+
+        //this.grupo.add(this.tierra1);
 
         this.grupo2=this.physics.add.staticGroup({
             key:'tierra_b',
@@ -100,41 +285,6 @@ class Nivel_2 extends Phaser.Scene{
                     tierra.setScale(.7);
     
             }   );
-        
-     
-        this.tierraPiso2=this.physics.add.staticGroup({
-            key:'tierra',
-            repeat:1,
-            setXY:{
-                x:1290,
-                y:610,
-                stepX:44.8
-            }
-        });
-        this.tierraPiso2.children.iterate((tierra)=>{
-            tierra.setDepth(1);
-            tierra.setScale(.7);
-            tierra.body.setSize(44,44);
-            tierra.body.setOffset(10,10);
-        }   );
-        this.tierraPiso3=this.physics.add.staticGroup({
-            key:'tierra',
-            repeat:1,
-            setXY:{
-                x:1400,
-                y:500,
-                stepX:44.8
-                
-            }
-            
-        });
-        this.tierraPiso3.children.iterate((tierra)=>{
-            tierra.setDepth(1);
-            tierra.setScale(.7);
-            tierra.body.setSize(44,44);
-            tierra.body.setOffset(10,10);
-        }   );
-        
         this.tierraPiso4=this.physics.add.group({
             key:'tierra',
             repeat:3,
@@ -154,74 +304,6 @@ class Nivel_2 extends Phaser.Scene{
             tierra.setVelocityX(50);
         }   );
 
-
-       
-        
-        this.tierraPiso5=this.physics.add.staticGroup({
-            key:'tierra',
-            repeat:0,
-            setXY:{
-                x:650,
-                y:400,
-                stepX:44.8
-            }
-        });
-        this.tierraPiso5.children.iterate((tierra)=>{
-            tierra.setDepth(1);
-            tierra.setScale(.7);
-            tierra.body.setSize(44,44);
-            tierra.body.setOffset(10,10);
-
-        }   );
-        this.tierraPiso6=this.physics.add.staticGroup({
-            key:'tierra',
-            repeat:1,
-            setXY:{
-                x:450,
-                y:400,
-                stepX:44.8
-            }
-        });
-        this.tierraPiso6.children.iterate((tierra)=>{
-            tierra.setDepth(1);
-            tierra.setScale(.7);
-            tierra.body.setSize(44,44);
-            tierra.body.setOffset(10,10);
-
-        }   );
-        this.tierraPiso7=this.physics.add.staticGroup({
-            key:'tierra',
-            repeat:2,
-            setXY:{
-                x:100,
-                y:300,
-                stepX:44.8
-            }
-        });
-        this.tierraPiso7.children.iterate((tierra)=>{
-            tierra.setDepth(1);
-            tierra.setScale(.7);
-            tierra.body.setSize(44,44);
-            tierra.body.setOffset(10,10);
-
-        }   );
-        this.tierraPiso8=this.physics.add.staticGroup({
-            key:'tierra',
-            repeat:2,
-            setXY:{
-                x:450,
-                y:200,
-                stepX:44.8
-            }
-        });
-        this.tierraPiso8.children.iterate((tierra)=>{
-            tierra.setDepth(1);
-            tierra.setScale(.7);
-            tierra.body.setSize(44,44);
-            tierra.body.setOffset(10,10);
-
-        }   );
-   
 
         // Sección donde se Agregaran Fisicas
         this.soldado.setBounce(.1);
@@ -323,13 +405,7 @@ class Nivel_2 extends Phaser.Scene{
         this.physics.add.collider(this.halberd,this.grupo);
         this.physics.add.collider(this.soldado,this.grupo);
 
-        
-        this.physics.add.collider(this.coaxoch,this.tierraPiso2);
-        this.physics.add.collider(this.coaxoch,this.tierraPiso3);
-        this.physics.add.collider(this.coaxoch,this.tierraPiso5);
-        this.physics.add.collider(this.coaxoch,this.tierraPiso6);
-        this.physics.add.collider(this.coaxoch,this.tierraPiso7);
-        this.physics.add.collider(this.coaxoch,this.tierraPiso8);
+    
         this.physics.add.collider(this.soldado,this.tierraPiso4);
 
 
