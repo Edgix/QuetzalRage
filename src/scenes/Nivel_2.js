@@ -566,7 +566,23 @@ class Nivel_2 extends Phaser.Scene{
     }
     update(time, delta) {
 
-
+     if (this.cursor.space.isDown)
+     { 
+        this.tweens = this.add.tween({
+            targets: [this.halberd],
+            angle: 70,
+            yoyo: true,
+             duration: 50,
+            });
+     }
+     if (this.cursor.space.isUp)
+     {
+        this.tweens = this.add.tween({
+            targets: [this.halberd],
+            angle: 0,
+             duration: 0,
+            });
+     }
     if (this.cursor.left.isDown)
     {
         this.coaxoch.setVelocityX(-200);
