@@ -13,22 +13,41 @@ class Inicio extends Phaser.Scene{
         this.load.image(["logoMain", "play_button", "play_button2"])
         this.load.path = "./assets/personajes/";
         this.load.image(["coaxoMain"])
+        this.load.path = "./assets/musica/";
+        this.load.audio('musica', 'Menu.mp3');
+
 
         
     }
     create() {
-     this.logo= this.add.image(750, 200, "logoMain"); 
+        let audio = this.sound.add('musica',{loop:true});
+        audio.play();
+     this.logo= this.add.image(750, 160, "logoMain"); 
      this.logo.setScale(1);
-     this.play = this.add.image(750, 500, 'play_button');
-     this.play2 = this.add.image(750, 500, 'play_button2');
-     this.play2.setVisible(false);
+     this.play = this.add.image(730, 650, 'play_button').setInteractive();
+     //this.play2 = this.add.image(750, 500, 'play_button2');
+     //this.play2.setVisible(false);
+     this.coaxo =this.add.image(730, 400, 'coaxoMain');
+     this.coaxo.setScale(.35);
+    
 
-     const eventos = Phaser.Input.Events;
-     this.play.on(eventos.POINTER_MOVE, (evento) => {
-        this.play2.setVisible(true);
+
+
+     this.play.on(Phaser.Input.Events.POINTER_DOWN, () => {
+        this.add.tween({
+            targets: [this.play, this.logo, this.coaxo],
+            ease: 'Bounce.easeIn',
+            y: -200,
+            duration: 1000,
+            onComplete: () => 
+            {
+                console.log('nepe');
+
+                this.scene.start('Nivel_2');
+            }
         });
-        this.play.on(eventos.POINTER_OUT, (evento) => {
-            });
+    });
+
  
     }
     update(time, delta) {
