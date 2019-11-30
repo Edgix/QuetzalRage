@@ -677,7 +677,10 @@ class Nivel_2 extends Phaser.Scene{
         });
         this.physics.add.collider(this.halberd,this.grupo);
         this.physics.add.collider(this.grupoSoldado,this.grupo);
-
+        this.physics.add.collider(this.coaxoch,this.halberd,(coaxoch,halberd) => {
+        
+        });
+      
     
         this.physics.add.collider(this.grupoSoldado,this.tierraPiso4);
 

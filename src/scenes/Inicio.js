@@ -11,6 +11,8 @@ class Inicio extends Phaser.Scene{
     preload() {
         this.load.path = "./assets/Objetos/";               //Ruta de Objetos(Inicia aqui cosas de la carpeta Objetos)
         this.load.image(["logoMain", "play_button", "play_button2"])
+        this.load.path = "./assets/escenarios/";            //Ruta Escenarios(Inicia aqui cosas de la carpeta Escenarios)
+        this.load.image(["Nivel_2"])
         this.load.path = "./assets/personajes/";
         this.load.image(["coaxoMain"])
         this.load.path = "./assets/musica/";
@@ -20,6 +22,9 @@ class Inicio extends Phaser.Scene{
         
     }
     create() {
+        this.Fondo = this.add.image(2700, 320, "Nivel_2"); 
+        this.Fondo.setDepth(0);
+        this.Fondo.setScale(1.2);
         //let audio = this.sound.add('musica',{loop:true});
      this.logo= this.add.image(750, 160, "logoMain"); 
      this.logo.setScale(1);
@@ -28,6 +33,7 @@ class Inicio extends Phaser.Scene{
      //this.play2.setVisible(false);
      this.coaxo =this.add.image(730, 400, 'coaxoMain');
      this.coaxo.setScale(.35);
+    
     // audio.play();
 
     
@@ -50,6 +56,7 @@ class Inicio extends Phaser.Scene{
             }
         });
     });
+
 
  
     }
