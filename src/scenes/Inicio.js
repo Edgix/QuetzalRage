@@ -20,7 +20,7 @@ class Inicio extends Phaser.Scene{
         
     }
     create() {
-        let audio = this.sound.add('musica',{loop:true});
+        //let audio = this.sound.add('musica',{loop:true});
      this.logo= this.add.image(750, 160, "logoMain"); 
      this.logo.setScale(1);
      this.play = this.add.image(730, 650, 'play_button').setInteractive();
@@ -28,7 +28,7 @@ class Inicio extends Phaser.Scene{
      //this.play2.setVisible(false);
      this.coaxo =this.add.image(730, 400, 'coaxoMain');
      this.coaxo.setScale(.35);
-     audio.play();
+    // audio.play();
 
     
 
@@ -42,9 +42,11 @@ class Inicio extends Phaser.Scene{
             duration: 1000,
             onComplete: () => 
             {
+                //audio.stop();
+                //audio.destroy();
                 console.log('nepe');
-                audio.stop();
                 this.scene.start('Nivel_2');
+
             }
         });
     });

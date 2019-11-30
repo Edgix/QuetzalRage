@@ -35,20 +35,19 @@ class Nivel_2 extends Phaser.Scene{
         this.halberd.setScale(1.2);
         const keyCodes= Phaser.Input.Keyboard.KeyCodes;
         this.cursor= this.input.keyboard.createCursorKeys();
-        this.soldado = this.physics.add.sprite(1100,200, 'soldado');
-        this.soldado.setDepth(1);
-        this.soldado.setScale(1.5);
-        this.soldado.anims.play('soldadostatic_walk');
-        this.soldado.body.setSize(this.soldado.width,this.soldado.height,true);
+              //SOLDADOS
+  
+
         this.coaxoch = this.physics.add.sprite(350,200, 'coaxoch');
         this.coaxoch.setDepth(1);
         this.coaxoch.setScale(1.5);
-        this.soldado.body.setSize(34,38);
-        this.soldado.body.setOffset(17,15);    
+     
         this.coaxoch.anims.play('coaxoch_static_walk');
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
         this.coaxoch.body.setSize(37.5,49);
         this.coaxoch.body.setOffset(4,2);
+        //SOLDADOS
+  
         let audio = this.sound.add('musica',{loop:true});
         this.Fondo = this.add.image(2700, 320, "Nivel_2"); 
         this.Fondo.setDepth(0);
@@ -58,7 +57,134 @@ class Nivel_2 extends Phaser.Scene{
         audio.play();
 
        // this.tierra1 = this.add.image(1290,600, "tierra");
-        
+       //GRUPO SOLDADO
+        this.grupoSoldado=this.physics.add.group({
+            key: 'soldado',
+            repeat:0,
+            setXY:{
+                x: 1100,
+                y: 200,
+                stepX:64
+            
+            }
+        });
+            this.grupoSoldado.children.iterate((soldado)=>{
+                soldado.setDepth(1);
+                soldado.setScale(1.5);
+                soldado.body.setSize(34,38);
+                soldado.body.setOffset(17,15); 
+                soldado.anims.play('soldadostatic_walk');
+            });
+            this.grupoSoldado.createMultiple({
+                key: 'soldado',
+                repeat:0,
+                setXY:{
+                    x: 100,
+                    y: 200,
+                    stepX:64
+                }
+            });
+            this.grupoSoldado.createMultiple({
+                key: 'soldado',
+                repeat:0,
+                setXY:{
+                    x: 1950,
+                    y: 200,
+                    stepX:64
+                }
+            });
+            this.grupoSoldado.createMultiple({
+                key: 'soldado',
+                repeat:0,
+                setXY:{
+                    x: 1750,
+                    y: 200,
+                    stepX:64
+                }
+            });
+            this.grupoSoldado.createMultiple({
+                key: 'soldado',
+                repeat:0,
+                setXY:{
+                    x: 2200,
+                    y: 200,
+                    stepX:64
+                }
+            });
+            this.grupoSoldado.createMultiple({
+                key: 'soldado',
+                repeat:0,
+                setXY:{
+                    x: 1200,
+                    y: 200,
+                    stepX:64
+                }
+            });
+            this.grupoSoldado.createMultiple({
+                key: 'soldado',
+                repeat:0,
+                setXY:{
+                    x: 2500,
+                    y: 200,
+                    stepX:64
+                }
+            });
+            this.grupoSoldado.createMultiple({
+                key: 'soldado',
+                repeat:0,
+                setXY:{
+                    x: 2900,
+                    y: 200,
+                    stepX:64
+                }
+            });
+            this.grupoSoldado.createMultiple({
+                key: 'soldado',
+                repeat:0,
+                setXY:{
+                    x: 3400,
+                    y: 200,
+                    stepX:64
+                }
+            });
+            this.grupoSoldado.createMultiple({
+                key: 'soldado',
+                repeat:0,
+                setXY:{
+                    x: 3500,
+                    y: 200,
+                    stepX:64
+                }
+            });
+            this.grupoSoldado.getChildren()[1].setScale(1.5);
+            this.grupoSoldado.getChildren()[1].body.setSize(34,38);
+            this.grupoSoldado.getChildren()[1].body.setOffset(17,15);
+            this.grupoSoldado.getChildren()[2].setScale(1.5);
+            this.grupoSoldado.getChildren()[2].body.setSize(34,38);
+            this.grupoSoldado.getChildren()[2].body.setOffset(17,15);
+            this.grupoSoldado.getChildren()[3].setScale(1.5);
+            this.grupoSoldado.getChildren()[3].body.setSize(34,38);
+            this.grupoSoldado.getChildren()[3].body.setOffset(17,15);
+            this.grupoSoldado.getChildren()[4].setScale(1.5);
+            this.grupoSoldado.getChildren()[4].body.setSize(34,38);
+            this.grupoSoldado.getChildren()[4].body.setOffset(17,15);
+            this.grupoSoldado.getChildren()[5].setScale(1.5);
+            this.grupoSoldado.getChildren()[5].body.setSize(34,38);
+            this.grupoSoldado.getChildren()[5].body.setOffset(17,15);
+            this.grupoSoldado.getChildren()[6].setScale(1.5);
+            this.grupoSoldado.getChildren()[6].body.setSize(34,38);
+            this.grupoSoldado.getChildren()[6].body.setOffset(17,15);
+            this.grupoSoldado.getChildren()[7].setScale(1.5);
+            this.grupoSoldado.getChildren()[7].body.setSize(34,38);
+            this.grupoSoldado.getChildren()[7].body.setOffset(17,15);
+            this.grupoSoldado.getChildren()[8].setScale(1.5);
+            this.grupoSoldado.getChildren()[8].body.setSize(34,38);
+            this.grupoSoldado.getChildren()[8].body.setOffset(17,15);
+            this.grupoSoldado.getChildren()[9].setScale(1.5);
+            this.grupoSoldado.getChildren()[9].body.setSize(34,38);
+            this.grupoSoldado.getChildren()[9].body.setOffset(17,15);
+           
+
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
             repeat:90,
@@ -452,30 +578,30 @@ class Nivel_2 extends Phaser.Scene{
 
 
         // Sección donde se Agregaran Fisicas
-        this.soldado.setBounce(.1);
+       // this.grupoSoldado.setBounce(.1);
         this.coaxoch.setBounce(.1);
-        this.enemi1= this.physics.add.collider(this.coaxoch, this.soldado, (coaxoch, soldado)=>{
+        this.enemi1= this.physics.add.collider(this.coaxoch, this.grupoSoldado, (coaxoch, grupoSoldado)=>{
            
             coaxoch.setTint(0xff0000);
            
 
-            if(soldado.body.touching.left){
+            if(grupoSoldado.body.touching.left){
                 coaxoch.setVelocityY(-100);
                 coaxoch.setVelocityX(1000);
-                soldado.setVelocityX(1000);
+                grupoSoldado.setVelocityX(1000);
             }
-            if(soldado.body.touching.right)
+            if(grupoSoldado.body.touching.right)
             {
                 coaxoch.setVelocityY(-100);
                 coaxoch.setVelocityX(1000000);
-                soldado.setVelocityX(-1000);
+                grupoSoldado.setVelocityX(-1000);
             }
             this.registry.events.emit('evento',{num:1, cancion:audio});
             this.enemi1.active =false;               
              setTimeout(() => {
                 coaxoch.setTint();
                 this.enemi1.active =true;
-                soldado.setVelocityX(0);
+                grupoSoldado.setVelocityX(0);
                 coaxoch.setVelocityX(0); 
             }, 150);
             
@@ -550,10 +676,10 @@ class Nivel_2 extends Phaser.Scene{
             this.coaxoch.anims.play('coaxoch_static_walk',true);
         });
         this.physics.add.collider(this.halberd,this.grupo);
-        this.physics.add.collider(this.soldado,this.grupo);
+        this.physics.add.collider(this.grupoSoldado,this.grupo);
 
     
-        this.physics.add.collider(this.soldado,this.tierraPiso4);
+        this.physics.add.collider(this.grupoSoldado,this.tierraPiso4);
 
 
 
