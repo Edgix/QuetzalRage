@@ -670,16 +670,18 @@ class Nivel_2 extends Phaser.Scene{
                 this.coaxoch.anims.play('coaxoch_static_walk',true);
             }
 
-        });        
+        });
+        
+        
         this.physics.add.collider(this.coaxoch,this.grupo,(coaxoch,grupo) => {
             coaxoch.setVelocityX(0);
             this.coaxoch.anims.play('coaxoch_static_walk',true);
         });
         this.physics.add.collider(this.halberd,this.grupo);
         this.physics.add.collider(this.grupoSoldado,this.grupo);
-        this.physics.add.collider(this.coaxoch,this.halberd,(coaxoch,halberd) => {
+       // this.physics.add.collider(this.coaxoch,this.halberd,(coaxoch,halberd) => {
         
-        });
+        //});
       
     
         this.physics.add.collider(this.grupoSoldado,this.tierraPiso4);
@@ -694,6 +696,9 @@ class Nivel_2 extends Phaser.Scene{
 
     }
     update(time, delta) {
+    
+    this.halberd.x=this.coaxoch.x;
+    this.halberd.y=this.coaxoch.y;
 
      if (this.cursor.space.isDown)
      { 

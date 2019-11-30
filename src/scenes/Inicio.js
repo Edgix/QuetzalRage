@@ -22,9 +22,11 @@ class Inicio extends Phaser.Scene{
         
     }
     create() {
-        this.Fondo = this.add.image(2700, 320, "Nivel_2"); 
+        let audio = this.sound.add('musica',{loop:true});
+        audio.play();
+        this.Fondo = this.add.image(2500, 380, "Nivel_2"); 
         this.Fondo.setDepth(0);
-        this.Fondo.setScale(1.2);
+        this.Fondo.setScale(1.3);
         //let audio = this.sound.add('musica',{loop:true});
      this.logo= this.add.image(750, 160, "logoMain"); 
      this.logo.setScale(1);
