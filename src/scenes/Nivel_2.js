@@ -22,7 +22,7 @@ class Nivel_2 extends Phaser.Scene{
         this.load.animation('SoldadoAnim', 'soldado_atlas/soldado_anim.json');
         this.load.animation('CoaxochAnim', 'coaxoch_atlas/coaxoch_anim.json');
         this.load.path = "./assets/musica/";
-        this.load.audio('musica', 'Nivel_dos.mp3');
+        this.load.audio('musica1', 'Nivel_dos.mp3');
        
         
     }
@@ -30,9 +30,12 @@ class Nivel_2 extends Phaser.Scene{
     create() {
         this.velo;
         this.scene.launch('SceneVida');
-        this.halberd = this.physics.add.image(350,200,'halberd');
+        this.halberd = this.physics.add.image(350,200,'halberd').setOrigin(.2,.5);
         this.halberd.setDepth(3);
         this.halberd.setScale(1.2);
+        this.halberd.body.setSize(17,17);
+        this.halberd.body.setOffset(35,13);
+        this.halberd.body.allowGravity= false;
         const keyCodes= Phaser.Input.Keyboard.KeyCodes;
         this.cursor= this.input.keyboard.createCursorKeys();
               //SOLDADOS
@@ -48,13 +51,13 @@ class Nivel_2 extends Phaser.Scene{
         this.coaxoch.body.setOffset(4,2);
         //SOLDADOS
   
-        let audio = this.sound.add('musica',{loop:true});
+       this.audios = this.sound.add('musica1',{loop:true});
         this.Fondo = this.add.image(2700, 320, "Nivel_2"); 
         this.Fondo.setDepth(0);
         this.Fondo.setScale(1.2);
         this.cameras.main.setBounds(0,0,4500,760);
         this.cameras.main.startFollow(this.coaxoch);
-        //audio.play();
+        this.audios.play();
 
        // this.tierra1 = this.add.image(1290,600, "tierra");
        //GRUPO SOLDADO
@@ -728,55 +731,62 @@ class Nivel_2 extends Phaser.Scene{
     
     this.physics.add.collider(this.grupoSoldado,this.tierraPiso4);
 
-
-
-
-
-                   
-        // Fin Seccion Fisicas
-
+    this.flip =false;
+   // Fin Seccion Fisicas
 
     }
     update(time, delta) {
-    
-    this.halberd.x=this.coaxoch.x;
     this.halberd.y=this.coaxoch.y;
+    
+    if( this.flip ==false)
+    {
+        this.halberd.x = this.coaxoch.x;
+        this.halberd.body.setOffset(35,13);
+    }else if( this.flip ==true)
+    {
+        this.halberd.x = this.coaxoch.x-55;
+        this.halberd.body.setOffset(13,13);
 
+    }
      if (this.cursor.space.isDown)
      { 
+         this.halberd.setOrigin(.5,.5);
         this.tweens = this.add.tween({
-            targets: [this.halberd],
-            angle: 70,
+            targets: [this.halberd,this.halberd.body.gameObject],
+            angle: -70,
             yoyo: true,
-             duration: 50,
+             duration: 30,
             });
      }
      if (this.cursor.space.isUp)
      {
         this.tweens = this.add.tween({
-            targets: [this.halberd],
+            targets: [this.halberd,this.halberd.body],
             angle: 0,
              duration: 0,
             });
      }
     if (this.cursor.left.isDown)
     {
-        this.halberd.x = this.coaxoch.x;
+        this.halberd.x = this.coaxoch.x-55;
+        this.halberd.body.setOffset(13,13);
         this.coaxoch.setVelocityX(-200);
         this.coaxoch.flipX=true;
         this.halberd.flipX=true;
         this.coaxoch.anims.play('coaxorun_walk',true);
         this.coaxoch.body.setOffset(10,2);
-
+        this.flip=true;
     }
     else if (this.cursor.right.isDown)
     {
+        this.halberd.x = this.coaxoch.x;
+        this.halberd.body.setOffset(35,13);
         this.coaxoch.setVelocityX(200);
         this.coaxoch.flipX=false;
         this.halberd.flipX=false;
         this.coaxoch.anims.play('coaxorun_walk',true);
         this.coaxoch.body.setOffset(4,2);
-
+        this.flip =false;
     }
     if (this.cursor.up.isDown && this.coaxoch.body.touching.down)
     {
