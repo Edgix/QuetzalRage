@@ -22,8 +22,8 @@ class Inicio extends Phaser.Scene{
         
     }
     create() {
-        let audio = this.sound.add('musica',{loop:true});
-        audio.play();
+        //let audio = this.sound.add('musica',{loop:true});
+        //audio.play();
         this.Fondo = this.add.image(2500, 380, "Nivel_2"); 
         this.Fondo.setDepth(0);
         this.Fondo.setScale(1.3);
