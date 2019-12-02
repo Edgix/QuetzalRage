@@ -1,3 +1,5 @@
+import SceneVida from "./SceneVida.js";
+import Nivel_2 from "./Nivel_2.js";
 class Inicio extends Phaser.Scene{
     constructor(){
         super({
@@ -53,8 +55,9 @@ class Inicio extends Phaser.Scene{
                 audio.stop();
                 audio.destroy();
                 console.log('nepe');
+                this.scene.add('Nivel_2',Nivel_2);
                 this.scene.start('Nivel_2');
-
+                this.scene.stop();
             }
         });
     });

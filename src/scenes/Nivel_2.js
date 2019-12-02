@@ -1,3 +1,4 @@
+import SceneVida from "./SceneVida.js";
 class Nivel_2 extends Phaser.Scene{
     constructor(){
         super({
@@ -9,7 +10,7 @@ class Nivel_2 extends Phaser.Scene{
   
     init() {
         console.log("Escena Nivel 2");
-       
+        this.scene.add('SceneVida',SceneVida);
     }
     preload() {
         this.load.path = "./assets/Objetos/";               //Ruta de Objetos(Inicia aqui cosas de la carpeta Objetos)
@@ -740,7 +741,7 @@ class Nivel_2 extends Phaser.Scene{
     this.physics.add.collider(this.grupoSoldado,this.tierraPiso4);
     this.physics.add.collider(this.gana, this.grupo);
     this.physics.add.collider(this.coaxoch, this.gana, (coaxoch, gana)=>{
-        this.scene.start('Nivel_1');
+    this.scene.start('Nivel_1');
         
     });
     this.flip =false;

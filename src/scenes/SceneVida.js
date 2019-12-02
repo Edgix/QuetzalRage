@@ -6,6 +6,7 @@ class SceneVida extends Phaser.Scene{
     }
     init() {
     console.log('Escena vida');
+    this.contador = 2;
     }
     
     create() {
@@ -32,23 +33,25 @@ class SceneVida extends Phaser.Scene{
                 repeat: -1,
                 easy: 'Power1'
                 });
-                var contador = 2;
+               
                 this.registry.events.on('evento',(dato)=>{
                    if(dato.num == 1)
                    {
-                    this.grupo3.getChildren()[contador].setVisible(false);
-                    contador--;
+                    console.log(this.contador);
+                    this.grupo3.getChildren()[this.contador].setVisible(false);
+                    this.contador--;
                    }
-                   if(contador == -1)
+                   if(this.contador==0)
                    {
-                       dato.cancion.stop();
-                       console.log(dato);
+                    dato.cancion.stop();
+                    this.registry.events.emit('reinicia');
                    }
                 });
                 
 
     }
     update(time, delta) {
+        
     }
     }
     export default SceneVida;

@@ -1,3 +1,6 @@
+
+import Nivel_2 from "./Nivel_2.js";
+import Inicio from "./Inicio.js";
 class Bootloader extends Phaser.Scene{
     constructor(){
         super({
@@ -9,11 +12,17 @@ class Bootloader extends Phaser.Scene{
         console.log("Escena Bootloader");
     }
     preload() {
-        this.load.path = "./assets/";               //Ruta de todas las imagenes
+        this.load.path = "./assets/";       
+        this.scene.add('Inicio',Inicio);        
     }
     create() {
-        //this.yoshi = this.add.image(100, 100, "yoshi"); //atributo
-        
+        this.scene.start('Inicio');
+     this.registry.events.on('reinicia',()=>{
+        this.registry.events.removeAllListeners();
+        this.scene.remove('Nivel_2');
+        this.scene.remove('SceneVida');
+        this.scene.start('Inicio');
+       });
     }
     update(time, delta) {
         // ESTA FUNCION CREA UN CICLO INFINITO
