@@ -754,7 +754,7 @@ class Nivel_2 extends Phaser.Scene{
     }else if( this.flip ==true)
     {
         this.Macuahuitl.x = this.coaxoch.x-55;
-        this.Macuahuitl.body.setOffset(13,13);
+        this.Macuahuitl.body.setOffset(25,15);
 
     }
      if (this.cursor.space.isDown)
