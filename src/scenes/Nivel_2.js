@@ -13,7 +13,7 @@ class Nivel_2 extends Phaser.Scene{
     }
     preload() {
         this.load.path = "./assets/Objetos/";               //Ruta de Objetos(Inicia aqui cosas de la carpeta Objetos)
-        this.load.image(["tierra", "tierra_b","Arrow", "score", "vida","halberd", "Cacao"]);
+        this.load.image(["tierra", "tierra_b","Arrow", "score", "vida","halberd", "Cacao", "ganar"]);
         this.load.path = "./assets/escenarios/";            //Ruta Escenarios(Inicia aqui cosas de la carpeta Escenarios)
         this.load.image(["Nivel_2"])
         this.load.path = "./assets/personajes/";            //Ruta Personajes(Inicia aqui cosas de la carpeta Personajes)
@@ -30,12 +30,20 @@ class Nivel_2 extends Phaser.Scene{
     create() {
         this.velo;
         this.scene.launch('SceneVida');
+        this.gana = this.physics.add.image(4280,300,'ganar');
+        this.gana.setDepth(1);
+        this.gana.setScale(2);
+        this.gana.body.setSize(55,30);//55
+        this.gana.body.setCircle(7);
+
+
         this.halberd = this.physics.add.image(350,200,'halberd').setOrigin(.2,.5);
         this.halberd.setDepth(3);
         this.halberd.setScale(1.2);
         this.halberd.body.setSize(17,17);
         this.halberd.body.setOffset(35,13);
         this.halberd.body.allowGravity= false;
+
         const keyCodes= Phaser.Input.Keyboard.KeyCodes;
         this.cursor= this.input.keyboard.createCursorKeys();
               //SOLDADOS
@@ -614,7 +622,7 @@ class Nivel_2 extends Phaser.Scene{
                 coaxoch.setVelocityX(1000000);
                 grupoSoldado.setVelocityX(-1000);
             }
-            this.registry.events.emit('evento',{num:1, cancion:audio});
+           this.registry.events.emit('evento',{num:1, cancion:audio});
             this.enemi1.active =false;               
              setTimeout(() => {
                 coaxoch.setTint();
@@ -730,7 +738,11 @@ class Nivel_2 extends Phaser.Scene{
       
     
     this.physics.add.collider(this.grupoSoldado,this.tierraPiso4);
-
+    this.physics.add.collider(this.gana, this.grupo);
+    this.physics.add.collider(this.coaxoch, this.gana, (coaxoch, gana)=>{
+        this.scene.start('Nivel_1');
+        
+    });
     this.flip =false;
    // Fin Seccion Fisicas
 
