@@ -622,7 +622,7 @@ class Nivel_2 extends Phaser.Scene{
                 coaxoch.setVelocityX(1000000);
                 grupoSoldado.setVelocityX(-1000);
             }
-           this.registry.events.emit('evento',{num:1, cancion:audio});
+           this.registry.events.emit('evento',{num:1, cancion:this.audios});
             this.enemi1.active =false;               
              setTimeout(() => {
                 coaxoch.setTint();
