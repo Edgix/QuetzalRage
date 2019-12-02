@@ -1,5 +1,4 @@
 import SceneVida from "./SceneVida.js";
-import Nivel_1 from "./Nivel_1.js";
 class Nivel_2 extends Phaser.Scene{
     constructor(){
         super({
@@ -15,7 +14,7 @@ class Nivel_2 extends Phaser.Scene{
     }
     preload() {
         this.load.path = "./assets/Objetos/";               //Ruta de Objetos(Inicia aqui cosas de la carpeta Objetos)
-        this.load.image(["tierra", "tierra_b","Arrow", "score", "vida","halberd", "Cacao", "ganar"]);
+        this.load.image(["tierra", "tierra_b","Arrow", "score", "vida","halberd","Macuahuitl", "Cacao", "ganar"]);
         this.load.path = "./assets/escenarios/";            //Ruta Escenarios(Inicia aqui cosas de la carpeta Escenarios)
         this.load.image(["Nivel_2"])
         this.load.path = "./assets/personajes/";            //Ruta Personajes(Inicia aqui cosas de la carpeta Personajes)
@@ -39,19 +38,19 @@ class Nivel_2 extends Phaser.Scene{
         this.gana.body.setCircle(7);
 
 
-        this.halberd = this.physics.add.image(350,200,'halberd').setOrigin(.2,.5);
-        this.halberd.setDepth(3);
-        this.halberd.setScale(1.2);
-        this.halberd.body.setSize(17,17);
-        this.halberd.body.setOffset(35,13);
-        this.halberd.body.allowGravity= false;
+        this.Macuahuitl = this.physics.add.image(350,200,'Macuahuitl').setOrigin(.2,.5);
+        this.Macuahuitl.setDepth(3);
+        this.Macuahuitl.setScale(1.2);
+        this.Macuahuitl.body.setSize(10,5);
+        this.Macuahuitl.body.setOffset(50,15);
+        this.Macuahuitl.body.allowGravity= false;
 
         const keyCodes= Phaser.Input.Keyboard.KeyCodes;
         this.cursor= this.input.keyboard.createCursorKeys();
               //SOLDADOS
   
 
-        this.coaxoch = this.physics.add.sprite(350,500, 'coaxoch');
+        this.coaxoch = this.physics.add.sprite(350,200, 'coaxoch');
         this.coaxoch.setDepth(1);
         this.coaxoch.setScale(1.5);
      
@@ -69,7 +68,6 @@ class Nivel_2 extends Phaser.Scene{
         this.cameras.main.startFollow(this.coaxoch);
         this.audios.play();
 
-       // this.tierra1 = this.add.image(1290,600, "tierra");
        //GRUPO SOLDADO
        this.grupoCacao= this.physics.add.group({
             key: 'Cacao',
@@ -83,7 +81,7 @@ class Nivel_2 extends Phaser.Scene{
        this.grupoCacao.children.iterate((Cacao)=>{
         Cacao.setDepth(1);
         Cacao.body.setOffset(17,15);
-        Cacao.body.setCircle(20); 
+        Cacao.body.setCircle(15); 
     });
         this.grupoSoldado=this.physics.add.group({
             key: 'soldado',
@@ -606,7 +604,6 @@ class Nivel_2 extends Phaser.Scene{
 
 
         // Sección donde se Agregaran Fisicas
-       // this.grupoSoldado.setBounce(.1);
         this.coaxoch.setBounce(.1);
         this.enemi1= this.physics.add.collider(this.coaxoch, this.grupoSoldado, (coaxoch, grupoSoldado)=>{
            
@@ -632,22 +629,6 @@ class Nivel_2 extends Phaser.Scene{
                 grupoSoldado.setVelocityX(0);
                 coaxoch.setVelocityX(0); 
             }, 150);
-            
-        });
-        this.salud= this.physics.add.collider(this.coaxoch, this.grupoCacao, (coaxoch, grupoCacao)=>{
-
-            coaxoch.setTint(0x0000ff);
-           this.registry.events.emit('evento', {num: 2});
-            this.salud.active =false;   
-           
-
-             setTimeout(() => {
-                coaxoch.setTint();
-                this.salud.active =true;
-              
-
-            }, 150);
-            grupoCacao.destroy();
             
         });
         var contf=0;
@@ -721,15 +702,12 @@ class Nivel_2 extends Phaser.Scene{
             coaxoch.setVelocityX(0);
             this.coaxoch.anims.play('coaxoch_static_walk',true);
         });
-        this.physics.add.collider(this.halberd,this.grupo);
+        this.physics.add.collider(this.Macuahuitl,this.grupo);
         this.physics.add.collider(this.grupoSoldado,this.grupo);
-       // this.physics.add.collider(this.coaxoch,this.halberd,(coaxoch,halberd) => {
-        
-        //});
-        
-        this.physics.add.collider(this.halberd,this.grupoSoldado,(halberd,grupoSoldado) => {
+
+        this.physics.add.collider(this.Macuahuitl,this.grupoSoldado,(Macuahuitl,grupoSoldado) => {
             var cont=0;
-            if(!halberd.body.touching.down)
+            if(!Macuahuitl.body.touching.down)
             {
                 this.grupoSoldado.setVelocityY(90);
                 cont+1;
@@ -747,16 +725,19 @@ class Nivel_2 extends Phaser.Scene{
 
         });
        this.physics.add.collider(this.grupoCacao, this.grupo);
- 
- 
+       this.physics.add.collider(this.coaxoch, this.grupoCacao, (coaxoch, grupoCacao)=>{
+        coaxoch.setTint(0x0000ff);
+        setTimeout(() => {
+            coaxoch.setTint();
+        }, 150);
+        
+    });
       
     
     this.physics.add.collider(this.grupoSoldado,this.tierraPiso4);
     this.physics.add.collider(this.gana, this.grupo);
     this.physics.add.collider(this.coaxoch, this.gana, (coaxoch, gana)=>{
-        this.scene.add('Nivel_1',Nivel_1);
-        this.scene.start('Nivel_1');
-        this.scene.stop();
+    this.scene.start('Nivel_1');
         
     });
     this.flip =false;
@@ -764,69 +745,54 @@ class Nivel_2 extends Phaser.Scene{
 
     }
     update(time, delta) {
-    this.halberd.y=this.coaxoch.y;
+    this.Macuahuitl.y=this.coaxoch.y;
     
     if( this.flip ==false)
     {
-        this.halberd.x = this.coaxoch.x;
-        this.halberd.body.setOffset(35,13);
+        this.Macuahuitl.x = this.coaxoch.x;
+        this.Macuahuitl.body.setOffset(35,13);
     }else if( this.flip ==true)
     {
-        this.halberd.x = this.coaxoch.x-55;
-        this.halberd.body.setOffset(13,13);
+        this.Macuahuitl.x = this.coaxoch.x-55;
+        this.Macuahuitl.body.setOffset(13,13);
 
     }
      if (this.cursor.space.isDown)
      { 
          //this.halberd.setOrigin(.5,.5);
-        this.tweens = this.add.tween({
-            targets: [this.halberd.body.gameObject],
-            angle: 30,
+        /*this.tweens = this.add.tween({
+            targets: [this.Macuahuitl,this.Macuahuitl.body.gameObject],
+            angle: -70,
             yoyo: true,
-             duration: -1,
-             x: 600,
-             setXY:{
-                 x:500,
+             duration: 30,
+            });*/
+            if(this.flip==false){
+                this.Macuahuitl.x=this.Macuahuitl.x +20;
              }
-            });
-
-            this.tweens = this.add.tween({
-                targets: [this.halberd],
-                angle: 30,
-                yoyo: true,
-                 duration: -1,
-                 x: 600,
-                 setXY:{
-                     x:500,
+                
+                  if(this.flip==true){
+                     this.Macuahuitl.x=this.Macuahuitl.x -20;
                  }
-                });
      }
-     if (this.cursor.space.isUp)
-     {
-        this.tweens = this.add.tween({
-            targets: [this.halberd,this.halberd.body],
-            angle: 30,
-             duration: 0,
-            });
-     }
+    
     if (this.cursor.left.isDown)
     {
-        this.halberd.x = this.coaxoch.x-55;
-        this.halberd.body.setOffset(13,13);
+        this.Macuahuitl.x = this.coaxoch.x-55;
+        this.Macuahuitl.body.setOffset(13,13);
         this.coaxoch.setVelocityX(-200);
         this.coaxoch.flipX=true;
-        this.halberd.flipX=true;
+        this.Macuahuitl.flipX=true;
         this.coaxoch.anims.play('coaxorun_walk',true);
         this.coaxoch.body.setOffset(10,2);
         this.flip=true;
     }
     else if (this.cursor.right.isDown)
     {
-        this.halberd.x = this.coaxoch.x;
-        this.halberd.body.setOffset(35,13);
+        this.Macuahuitl.x = this.coaxoch.x;
+        this.Macuahuitl.body.setOffset(35,13);
         this.coaxoch.setVelocityX(200);
         this.coaxoch.flipX=false;
-        this.halberd.flipX=false;
+        this.Macuahuitl.flipX=false;
         this.coaxoch.anims.play('coaxorun_walk',true);
         this.coaxoch.body.setOffset(4,2);
         this.flip =false;
