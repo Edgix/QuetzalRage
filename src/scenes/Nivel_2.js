@@ -762,7 +762,7 @@ class Nivel_2 extends Phaser.Scene{
     }
      if (this.cursor.space.isDown)
      { 
-         this.halberd.setOrigin(.5,.5);
+         //this.halberd.setOrigin(.5,.5);
         this.tweens = this.add.tween({
             targets: [this.halberd,this.halberd.body.gameObject],
             angle: -70,
