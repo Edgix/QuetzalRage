@@ -41,6 +41,14 @@ class SceneVida extends Phaser.Scene{
                     this.grupo3.getChildren()[this.contador].setVisible(false);
                     this.contador--;
                    }
+                   if(dato.num == 2)
+                   {
+                       if(this.contador<2){
+                    this.contador++;
+                    console.log(this.contador);
+                    this.grupo3.getChildren()[this.contador].setVisible(true);
+                       }
+                   }
                    if(this.contador==0)
                    {
                     dato.cancion.stop();

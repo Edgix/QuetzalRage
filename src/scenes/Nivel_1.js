@@ -7,6 +7,7 @@ class Nivel_1 extends Phaser.Scene{
 
     init() {
         console.log("Escena Nivel 1");
+
     }
     preload() {
         this.load.path = "./assets/Objetos/";               //Ruta de Objetos(Inicia aqui cosas de la carpeta Objetos)

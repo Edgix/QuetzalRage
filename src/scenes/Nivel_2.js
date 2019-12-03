@@ -1,4 +1,5 @@
 import SceneVida from "./SceneVida.js";
+import Nivel_1 from "./Nivel_1.js";
 class Nivel_2 extends Phaser.Scene{
     constructor(){
         super({
@@ -50,7 +51,7 @@ class Nivel_2 extends Phaser.Scene{
               //SOLDADOS
   
 
-        this.coaxoch = this.physics.add.sprite(350,200, 'coaxoch');
+        this.coaxoch = this.physics.add.sprite(350,500, 'coaxoch');
         this.coaxoch.setDepth(1);
         this.coaxoch.setScale(1.5);
      
@@ -82,7 +83,7 @@ class Nivel_2 extends Phaser.Scene{
        this.grupoCacao.children.iterate((Cacao)=>{
         Cacao.setDepth(1);
         Cacao.body.setOffset(17,15);
-        Cacao.body.setCircle(15); 
+        Cacao.body.setCircle(20); 
     });
         this.grupoSoldado=this.physics.add.group({
             key: 'soldado',
@@ -633,6 +634,22 @@ class Nivel_2 extends Phaser.Scene{
             }, 150);
             
         });
+        this.salud= this.physics.add.collider(this.coaxoch, this.grupoCacao, (coaxoch, grupoCacao)=>{
+
+            coaxoch.setTint(0x0000ff);
+           this.registry.events.emit('evento', {num: 2});
+            this.salud.active =false;   
+           
+
+             setTimeout(() => {
+                coaxoch.setTint();
+                this.salud.active =true;
+              
+
+            }, 150);
+            grupoCacao.destroy();
+            
+        });
         var contf=0;
         this.flechas = this.physics.add.group();
 
@@ -709,6 +726,7 @@ class Nivel_2 extends Phaser.Scene{
        // this.physics.add.collider(this.coaxoch,this.halberd,(coaxoch,halberd) => {
         
         //});
+        
         this.physics.add.collider(this.halberd,this.grupoSoldado,(halberd,grupoSoldado) => {
             var cont=0;
             if(!halberd.body.touching.down)
@@ -729,19 +747,16 @@ class Nivel_2 extends Phaser.Scene{
 
         });
        this.physics.add.collider(this.grupoCacao, this.grupo);
-       this.physics.add.collider(this.coaxoch, this.grupoCacao, (coaxoch, grupoCacao)=>{
-        coaxoch.setTint(0x0000ff);
-        setTimeout(() => {
-            coaxoch.setTint();
-        }, 150);
-        
-    });
+ 
+ 
       
     
     this.physics.add.collider(this.grupoSoldado,this.tierraPiso4);
     this.physics.add.collider(this.gana, this.grupo);
     this.physics.add.collider(this.coaxoch, this.gana, (coaxoch, gana)=>{
-    this.scene.start('Nivel_1');
+        this.scene.add('Nivel_1',Nivel_1);
+        this.scene.start('Nivel_1');
+        this.scene.stop();
         
     });
     this.flip =false;
@@ -765,17 +780,32 @@ class Nivel_2 extends Phaser.Scene{
      { 
          //this.halberd.setOrigin(.5,.5);
         this.tweens = this.add.tween({
-            targets: [this.halberd,this.halberd.body.gameObject],
-            angle: -70,
+            targets: [this.halberd.body.gameObject],
+            angle: 30,
             yoyo: true,
-             duration: 30,
+             duration: -1,
+             x: 600,
+             setXY:{
+                 x:500,
+             }
             });
+
+            this.tweens = this.add.tween({
+                targets: [this.halberd],
+                angle: 30,
+                yoyo: true,
+                 duration: -1,
+                 x: 600,
+                 setXY:{
+                     x:500,
+                 }
+                });
      }
      if (this.cursor.space.isUp)
      {
         this.tweens = this.add.tween({
             targets: [this.halberd,this.halberd.body],
-            angle: 0,
+            angle: 30,
              duration: 0,
             });
      }
