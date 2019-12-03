@@ -49,7 +49,7 @@ class SceneVida extends Phaser.Scene{
                     this.grupo3.getChildren()[this.contador].setVisible(true);
                        }
                    }
-                   if(this.contador==0)
+                   if(this.contador==-1)
                    {
                     dato.cancion.stop();
                     this.registry.events.emit('reinicia');

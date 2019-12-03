@@ -64,7 +64,7 @@ class Nivel_2 extends Phaser.Scene{
         this.coaxoch.body.setSize(37.5,49);
         this.coaxoch.body.setOffset(4,2);
         //HERNAN
-        this.hernan = this.physics.add.sprite(500,400, 'hernan');
+        this.hernan = this.physics.add.sprite(3200,200, 'hernan');
         this.hernan.setDepth(1);
         this.hernan.setScale(3);
      
