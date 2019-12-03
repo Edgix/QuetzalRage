@@ -1,0 +1,32 @@
+{
+    "anims": [
+        {
+            "key": "hernan_estatico_walk",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "hernan_estatico",
+                    "frame": "hernan0"
+                },
+                {
+                    "key": "hernan_estatico",
+                    "frame": "hernan1"
+                }
+            ]
+        },
+        {
+            "key": "hernan_estatico_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "hernan_estatico",
+                    "frame": "hernan1"
+                }
+            ]
+        }
+    ]
+}
