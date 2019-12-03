@@ -1,8 +1,9 @@
 import Bootloader from "./scenes/Bootloader.js"
 import Inicio from "./scenes/Inicio.js";
-import Nivel_1 from "./scenes/Nivel_1.js";
 import Nivel_2 from "./scenes/Nivel_2.js";
+import Nivel_1 from "./scenes/Nivel_1.js";
 import SceneVida from "./scenes/SceneVida.js";
+import ganaste from "./scenes/ganaste.js";
 
 const config = {
     title: "Curso Phaser",		    //Nombre del juego (opcional)

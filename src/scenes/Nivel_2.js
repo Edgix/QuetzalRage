@@ -1,4 +1,5 @@
 import SceneVida from "./SceneVida.js";
+import Nivel_1 from "./Nivel_1.js";
 class Nivel_2 extends Phaser.Scene{
     constructor(){
         super({
@@ -19,11 +20,9 @@ class Nivel_2 extends Phaser.Scene{
         this.load.image(["Nivel_2"])
         this.load.path = "./assets/personajes/";            //Ruta Personajes(Inicia aqui cosas de la carpeta Personajes)
         this.load.atlas('coaxoch', 'coaxoch_atlas/coaxoch.png','coaxoch_atlas/coaxoch_atlas.json');
-        this.load.atlas('hernan', 'hernan_atlas/hernan.png','hernan_atlas/hernan_atlas.json');
         this.load.atlas('soldado', 'soldado_atlas/soldado.png', 'soldado_atlas/soldado_atlas.json');
         this.load.animation('SoldadoAnim', 'soldado_atlas/soldado_anim.json');
         this.load.animation('CoaxochAnim', 'coaxoch_atlas/coaxoch_anim.json');
-        this.load.animation('HernanAnim', 'hernan_atlas/hernan_anim.json');
 
         this.load.path = "./assets/musica/";
         this.load.audio('musica1', 'Nivel_dos.mp3');
@@ -40,7 +39,6 @@ class Nivel_2 extends Phaser.Scene{
         this.gana.setScale(2);
         this.gana.body.setSize(55,30);//55
         this.gana.body.setCircle(7);
-        this.gana.body.setEnable(false);
 
 
         this.Macuahuitl = this.physics.add.image(350,200,'Macuahuitl').setOrigin(.2,.5);
@@ -64,14 +62,6 @@ class Nivel_2 extends Phaser.Scene{
         this.coaxoch.body.setSize(37.5,49);
         this.coaxoch.body.setOffset(4,2);
         //HERNAN
-        this.hernan = this.physics.add.sprite(3200,200, 'hernan');
-        this.hernan.setDepth(1);
-        this.hernan.setScale(3);
-     
-        this.hernan.anims.play('hernanstatic_walk');
-        this.hernan.body.setSize(this.hernan.width,this.hernan.height,true);
-        this.hernan.body.setSize(40,55);
-        this.hernan.body.setOffset(14,6)
 
         //SOLDADOS
   
@@ -542,30 +532,6 @@ class Nivel_2 extends Phaser.Scene{
             
 
         });
-        //HERNAN
-        var contp=0;
-        this.boss= this.physics.add.collider(this.Macuahuitl,this.hernan,(Macuahuitl,hernan) => {
-        
-                hernan.setTint(0xff0000);  
-                console.log("golpe");
-                contp++;
-                this.boss.active =false;               
-
-
-         console.log(contp);
-        if(contp==10){
-            console.log("poncho se la come doblada");
-            this.hernan.destroy();
-            this.gana.body.setEnable(true);
-
-        } 
-             setTimeout(() => {
-                this.boss.active =true;
-                hernan.setTint();
-            }, 1000);
-            
-
-        });
        this.physics.add.collider(this.grupoCacao, this.grupo);
        
        this.salud= this.physics.add.collider(this.coaxoch, this.grupoCacao, (coaxoch, grupoCacao)=>{
@@ -588,9 +554,11 @@ class Nivel_2 extends Phaser.Scene{
     
     this.physics.add.collider(this.grupoSoldado,this.tierraPiso4);
     this.physics.add.collider(this.gana, this.grupo);
-    this.physics.add.collider(this.hernan, this.grupo);
 
     this.physics.add.collider(this.coaxoch, this.gana, (coaxoch, gana)=>{
+        audios.stop();
+        audios.destroy();
+        this.scene.add('Nivel_1',Nivel_1)
     this.scene.start('Nivel_1');
         
     });
