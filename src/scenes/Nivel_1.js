@@ -47,8 +47,8 @@ class Nivel_1 extends Phaser.Scene{
         this.Macuahuitl = this.physics.add.image(350,200,'Macuahuitl').setOrigin(.2,.5);
         this.Macuahuitl.setDepth(3);
         this.Macuahuitl.setScale(1.2);
-        this.Macuahuitl.body.setSize(10,5);
-        this.Macuahuitl.body.setOffset(50,15);
+        this.Macuahuitl.body.setSize(20,5);
+        this.Macuahuitl.body.setOffset(50,25);
         this.Macuahuitl.body.allowGravity= false;
 
         const keyCodes= Phaser.Input.Keyboard.KeyCodes;
@@ -68,10 +68,20 @@ class Nivel_1 extends Phaser.Scene{
         this.hernan = this.physics.add.sprite(3200,400, 'hernan');
         this.hernan.setDepth(1);
         this.hernan.setScale(3);
+        this.hernan.flipX=true;
+
+        this.halberd = this.physics.add.image(200,190,'halberd').setOrigin(.5,1);
+        this.halberd.setDepth(3);
+        this.halberd.setScale(1.2);
+        this.halberd.body.setSize(55,25);
+        this.halberd.body.setOffset(-10,15);
+        this.halberd.body.allowGravity= false;
+        this.halberd.flipX=true;
+
      
         this.hernan.anims.play('hernanstatic_walk');
         this.hernan.body.setSize(this.hernan.width,this.hernan.height,true);
-        this.hernan.body.setSize(40,55);
+        this.hernan.body.setSize(40,52);
         this.hernan.body.setOffset(14,6)
 
         //SOLDADOS
@@ -83,6 +93,17 @@ class Nivel_1 extends Phaser.Scene{
         this.cameras.main.setBounds(0,0,4500,760);
         this.cameras.main.startFollow(this.coaxoch);
         this.audios2.play();
+        //hacha movible
+       
+        this.tweens = this.add.tween({
+            targets: [this.halberd],
+            angle:-50,
+            repeat: -1,
+            yoyo: true,
+            repeatDelay: 200,
+             duration: 200,
+ 
+});
 
        //GRUPO SOLDADO
        this.grupoCacao= this.physics.add.group({
@@ -535,22 +556,16 @@ class Nivel_1 extends Phaser.Scene{
         this.physics.add.collider(this.grupoSoldado,this.grupo);
 
         this.physics.add.collider(this.Macuahuitl,this.grupoSoldado,(Macuahuitl,grupoSoldado) => {
-            var cont=0;
-            if(!Macuahuitl.body.touching.down)
-            {
-                this.grupoSoldado.setVelocityY(90);
-                cont+1;
-            }
-            else{
-                this.grupoSoldado.setVelocityY(-90);
-            }
-            this.grupoSoldado.getChildren()[cont].destroy();
-            cont++;
-            grupoSoldado.setTint(0xff0000);              
-             setTimeout(() => {
-                grupoSoldado.setTint();
-            }, 150);
             
+            grupoSoldado.destroy();
+            
+
+        });
+
+         //collider hacha con coaxoch
+         this.physics.add.collider(this.halberd,this.coaxoch,(halberd,coaxoch) => {
+            
+            this.registry.events.emit('evento',{num:1, cancion:this.audios});
 
         });
         //HERNAN
@@ -567,6 +582,7 @@ class Nivel_1 extends Phaser.Scene{
         if(contp==10){
             console.log("poncho se la come doblada");
             this.hernan.destroy();
+            this.halberd.destroy();
             this.gana.body.setEnable(true);
 
         } 
@@ -615,15 +631,17 @@ class Nivel_1 extends Phaser.Scene{
     }
     update(time, delta) {
     this.Macuahuitl.y=this.coaxoch.y;
+    this.halberd.x=this.hernan.x-20;
+    this.halberd.y=this.hernan.y+65;
 
     if( this.flip ==false)
     {
         this.Macuahuitl.x = this.coaxoch.x;
-        this.Macuahuitl.body.setOffset(35,13);
+        this.Macuahuitl.body.setOffset(35,25);
     }else if( this.flip ==true)
     {
         this.Macuahuitl.x = this.coaxoch.x-55;
-        this.Macuahuitl.body.setOffset(25,15);
+        this.Macuahuitl.body.setOffset(25,25);
 
     }
      if (this.cursor.space.isDown)
