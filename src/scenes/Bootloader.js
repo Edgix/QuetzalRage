@@ -1,6 +1,3 @@
-
-import Nivel_2 from "./Nivel_2.js";
-import Inicio from "./Inicio.js";
 class Bootloader extends Phaser.Scene{
     constructor(){
         super({
@@ -12,15 +9,17 @@ class Bootloader extends Phaser.Scene{
         console.log("Escena Bootloader");
     }
     preload() {
-        this.load.path = "./assets/";       
-        this.scene.add('Inicio',Inicio);        
+        this.load.path = "./assets/";          
     }
     create() {
         this.scene.start('Inicio');
-     this.registry.events.on('reinicia',()=>{
+        this.registry.events.on('reinicia',()=>{
+        this.scene.stop('Nivel_2');
+        this.scene.stop('Nivel_1');
         this.registry.events.removeAllListeners();
-        this.scene.remove('Nivel_2');
-        this.scene.remove('SceneVida');
+        this.scene.stop('SceneVidas');
+        this.scene.stop('SceneVidas2');
+
         this.scene.start('Inicio');
        });
     }

@@ -11,7 +11,6 @@ class Nivel_2 extends Phaser.Scene{
   
     init() {
         console.log("Escena Nivel 2");
-        this.scene.add('SceneVida',SceneVida);
     }
     preload() {
         this.load.path = "./assets/Objetos/";               //Ruta de Objetos(Inicia aqui cosas de la carpeta Objetos)
@@ -46,17 +45,15 @@ class Nivel_2 extends Phaser.Scene{
         this.Macuahuitl.setScale(1.2);
         this.Macuahuitl.body.setSize(20,5);
         this.Macuahuitl.body.setOffset(50,25);
-        this.Macuahuitl.body.allowGravity= false;
-
+        this.Macuahuitl.body.enable=false;
         const keyCodes= Phaser.Input.Keyboard.KeyCodes;
         this.cursor= this.input.keyboard.createCursorKeys();
               //SOLDADOS
   
 
-        this.coaxoch = this.physics.add.sprite(350,200, 'coaxoch');
+        this.coaxoch = this.physics.add.sprite(350,500, 'coaxoch');
         this.coaxoch.setDepth(1);
         this.coaxoch.setScale(1.5);
-     
         this.coaxoch.anims.play('coaxoch_static_walk');
         this.coaxoch.body.setSize(this.coaxoch.width,this.coaxoch.height,true);
         this.coaxoch.body.setSize(37.5,49);
@@ -191,7 +188,7 @@ class Nivel_2 extends Phaser.Scene{
 
         this.grupo=this.physics.add.staticGroup({
             key:'tierra',
-            repeat:90,
+            repeat:105,
             setXY:{
                 x:3,
                 y:684,
@@ -418,14 +415,12 @@ class Nivel_2 extends Phaser.Scene{
            
 
             if(grupoSoldado.body.touching.left){
-                coaxoch.setVelocityY(-100);
-                coaxoch.setVelocityX(1000);
+            
                 grupoSoldado.setVelocityX(1000);
             }
             if(grupoSoldado.body.touching.right)
             {
-                coaxoch.setVelocityY(-100);
-                coaxoch.setVelocityX(1000000);
+               
                 grupoSoldado.setVelocityX(-1000);
             }
            this.registry.events.emit('evento',{num:1, cancion:this.audios});
@@ -463,10 +458,15 @@ class Nivel_2 extends Phaser.Scene{
         },
         repeat:-1
     })
-       
+       this.cf=0;
         this.physics.add.collider(this.coaxoch,this.flechas,(coaxoch,flechas) => {
             flechas.body.enable = false;
-            this.registry.events.emit('evento',{num:1, cancion:this.audios});
+            this.cf++;
+            if(this.cf==2){
+                this.registry.events.emit('evento',{num:1, cancion:this.audios});
+                this.cf=0;
+            }
+            
             if(!coaxoch.body.touching.down)
             {
                 this.coaxoch.setVelocityY(90);
@@ -542,10 +542,12 @@ class Nivel_2 extends Phaser.Scene{
     this.physics.add.collider(this.gana, this.grupo);
 
     this.physics.add.collider(this.coaxoch, this.gana, (coaxoch, gana)=>{
-        audios.stop();
-        audios.destroy();
-        this.scene.add('Nivel_1',Nivel_1)
-    this.scene.start('Nivel_1');
+         this.scene.start('Nivel_1');
+         this.audios.stop();
+         this.audios.destroy();
+         this.scene.stop('SceneVidas');
+         this.scene.stop();
+         
         
     });
     
@@ -566,7 +568,7 @@ class Nivel_2 extends Phaser.Scene{
 
     }
      if (this.cursor.space.isDown)
-     { 
+     {  this.Macuahuitl.body.enable=true;
             if(this.flip==false){
                 this.Macuahuitl.x=this.Macuahuitl.x +20;
              }
@@ -574,12 +576,16 @@ class Nivel_2 extends Phaser.Scene{
                   if(this.flip==true){
                      this.Macuahuitl.x=this.Macuahuitl.x -20;
                  }
+                 setTimeout(() => {
+                    this.Macuahuitl.body.enable=false;
+                }, 500);
+                
      }
     
     if (this.cursor.left.isDown)
     {
         this.Macuahuitl.x = this.coaxoch.x-55;
-        this.Macuahuitl.body.setOffset(13,13);
+        this.Macuahuitl.body.setOffset(25,25);
         this.coaxoch.setVelocityX(-200);
         this.coaxoch.flipX=true;
         this.Macuahuitl.flipX=true;
@@ -590,7 +596,7 @@ class Nivel_2 extends Phaser.Scene{
     else if (this.cursor.right.isDown)
     {
         this.Macuahuitl.x = this.coaxoch.x;
-        this.Macuahuitl.body.setOffset(35,13);
+        this.Macuahuitl.body.setOffset(25,25);
         this.coaxoch.setVelocityX(200);
         this.coaxoch.flipX=false;
         this.Macuahuitl.flipX=false;
@@ -629,6 +635,8 @@ class Nivel_2 extends Phaser.Scene{
                 // move enemy to right
                 Soldado.setVelocityX(100);
                 Soldado.flipX =false;
+            }else{
+                Soldado.setVelocityX(0);
             }
         }
         

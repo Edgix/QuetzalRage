@@ -3,6 +3,8 @@ import Inicio from "./scenes/Inicio.js";
 import Nivel_2 from "./scenes/Nivel_2.js";
 import Nivel_1 from "./scenes/Nivel_1.js";
 import SceneVida from "./scenes/SceneVida.js";
+import SceneVida2 from "./scenes/SceneVida2.js";
+
 import ganaste from "./scenes/ganaste.js";
 
 const config = {
@@ -17,7 +19,7 @@ const config = {
                                     // se refiere a dónde se pondrá el canvas o lienzo
     pixelArt: true,		            //Diseño con pixeles definidos (no borrosos)
     backgroundColor: "#34495e", 	//Color de fondo del canvas ()
-    scene: [Bootloader],    //Aquí irá la lista de scenas del juego
+    scene: [Bootloader,Inicio,Nivel_2,Nivel_1,SceneVida, SceneVida2],    //Aquí irá la lista de scenas del juego
     banner:{
         hidePhaser: true,
         text: "#fff00f",
@@ -31,7 +33,7 @@ const config = {
         default : 'arcade',
         arcade:{
             gravity: {y:500},
-            debug : true
+            debug : false
         }
 
     }

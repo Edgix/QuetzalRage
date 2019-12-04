@@ -1,11 +1,11 @@
-class SceneVida extends Phaser.Scene{
+class SceneVida2 extends Phaser.Scene{
     constructor(){
     super({
-    key: 'SceneVida'
+    key: 'SceneVida2'
     });
     }
     init() {
-    console.log('Escena vida');
+    console.log('Escena vida 2');
     this.contador = 2;
     }
     
@@ -61,4 +61,4 @@ class SceneVida extends Phaser.Scene{
         
     }
     }
-    export default SceneVida;
+    export default SceneVida2;

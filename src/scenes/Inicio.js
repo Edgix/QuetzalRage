@@ -27,16 +27,19 @@ class Inicio extends Phaser.Scene{
         let audio = this.sound.add('musica',{loop:true});
         audio.play();
         this.Fondo = this.add.image(2500, 380, "Nivel_2"); 
-        this.Fondo.setDepth(0);
+        this.Fondo.setDepth(2);
         this.Fondo.setScale(1.3);
         //let audio = this.sound.add('musica',{loop:true});
      this.logo= this.add.image(750, 160, "logoMain"); 
      this.logo.setScale(1);
-     this.play = this.add.image(730, 650, 'play_button').setInteractive();
+     this.logo.setDepth(3);
+     this.play = this.add.image(730, 650, 'play_button').setInteractive().setDepth(3);
+    
      //this.play2 = this.add.image(750, 500, 'play_button2');
      //this.play2.setVisible(false);
      this.coaxo =this.add.image(730, 400, 'coaxoMain');
-     this.coaxo.setScale(.35);
+     this.coaxo.setScale(.3);
+     this.coaxo.setDepth(3)
     
     // audio.play();
 
@@ -55,7 +58,6 @@ class Inicio extends Phaser.Scene{
                 audio.stop();
                 audio.destroy();
                 console.log('nepe');
-                this.scene.add('Nivel_2',Nivel_2);
                 this.scene.start('Nivel_2');
                 this.scene.stop();
             }
